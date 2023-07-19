@@ -1,5 +1,3 @@
-.\objects\ff.o: ..\USER\FATFS_V0.09\src\ff.c
-.\objects\ff.o: ..\USER\FATFS_V0.09\src\ff.h
-.\objects\ff.o: ..\USER\FATFS_V0.09\src\integer.h
-.\objects\ff.o: ..\USER\FATFS_V0.09\src\ffconf.h
-.\objects\ff.o: ..\USER\FATFS_V0.09\src\diskio.h
+./objects/ff.o: ..\USER\FATFS_V0.09\src\ff.c ..\USER\FATFS_V0.09\src\ff.h \
+  ..\USER\FATFS_V0.09\src\integer.h ..\USER\FATFS_V0.09\src\ffconf.h \
+  ..\USER\FATFS_V0.09\src\diskio.h

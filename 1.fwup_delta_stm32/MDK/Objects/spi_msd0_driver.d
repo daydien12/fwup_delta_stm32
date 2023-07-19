@@ -1,19 +1,18 @@
-.\objects\spi_msd0_driver.o: ..\USER\SPI_SD_Card\SPI_MSD0_Driver.c
-.\objects\spi_msd0_driver.o: ..\USER\SPI_SD_Card\SPI_MSD0_Driver.h
-.\objects\spi_msd0_driver.o: C:\Keil_v517\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h
-.\objects\spi_msd0_driver.o: C:\Users\nhanma\Documents\github\fwup_delta_stm32\1.fwup_delta_stm32\MDK\RTE\RTE_Components.h
-.\objects\spi_msd0_driver.o: C:\Keil_v517\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm3.h
-.\objects\spi_msd0_driver.o: C:\Keil_v517\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\spi_msd0_driver.o: C:\Keil_v517\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmInstr.h
-.\objects\spi_msd0_driver.o: C:\Keil_v517\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\cmsis_armcc.h
-.\objects\spi_msd0_driver.o: C:\Keil_v517\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h
-.\objects\spi_msd0_driver.o: C:\Keil_v517\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\system_stm32f10x.h
-.\objects\spi_msd0_driver.o: C:\Users\nhanma\Documents\github\fwup_delta_stm32\1.fwup_delta_stm32\MDK\RTE\Device\STM32F103C8\stm32f10x_conf.h
-.\objects\spi_msd0_driver.o: C:\Keil_v517\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
-.\objects\spi_msd0_driver.o: C:\Keil_v517\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h
-.\objects\spi_msd0_driver.o: C:\Keil_v517\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
-.\objects\spi_msd0_driver.o: C:\Keil_v517\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h
-.\objects\spi_msd0_driver.o: C:\Keil_v517\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h
-.\objects\spi_msd0_driver.o: C:\Keil_v517\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\misc.h
-.\objects\spi_msd0_driver.o: ..\USER\SPI_SD_Card\SPI_MSD1_Driver.h
-.\objects\spi_msd0_driver.o: C:\Keil_v517\ARM\ARMCC\Bin\..\include\stdio.h
+./objects/spi_msd0_driver.o: ..\USER\SPI_SD_Card\SPI_MSD0_Driver.c \
+  ..\USER\SPI_SD_Card\SPI_MSD0_Driver.h \
+  C:\Users\nhanma\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h \
+  RTE\_Target_1\RTE_Components.h \
+  C:\Users\nhanma\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm3.h \
+  C:\Keil_v536\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  C:\Users\nhanma\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h \
+  C:\Users\nhanma\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h \
+  C:\Users\nhanma\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armclang.h \
+  C:\Users\nhanma\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h \
+  RTE\Device\STM32F103C8\stm32f10x_conf.h \
+  C:\Users\nhanma\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h \
+  C:\Users\nhanma\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h \
+  C:\Users\nhanma\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h \
+  C:\Users\nhanma\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h \
+  C:\Users\nhanma\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc\misc.h \
+  ..\USER\SPI_SD_Card\SPI_MSD1_Driver.h \
+  C:\Keil_v536\ARM\ARMCLANG\Bin\..\include\stdio.h

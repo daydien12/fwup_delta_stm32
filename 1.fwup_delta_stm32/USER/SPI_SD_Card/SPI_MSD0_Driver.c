@@ -32,7 +32,7 @@ MSD_CARDINFO SD0_CardInfo;
 * Return         : None
 * Attention		 : None
 *******************************************************************************/
-__inline int MSD0_spi_read_write(uint8_t data)
+ int MSD0_spi_read_write(uint8_t data)
 {
   /* Loop while DR register in not emplty */
   //while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);

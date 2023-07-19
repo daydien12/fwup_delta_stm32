@@ -22,6 +22,7 @@ static unsigned char source_buf[1024];
 static unsigned char target_buf[1024];
 static unsigned char patch_buf [1024];
 
+uint16_t counts = 0;
 
 typedef struct 
 {
@@ -46,11 +47,8 @@ size_t sfio_fread(void* ptr, size_t size, size_t count, sfio_stream_t* stream)
     bytesToRead = stream->size - stream->offset;
   }
 	
-	printf("read: %s-%d-%d\n", stream->name_file, stream->offset, stream->currentPosition);
-  //f_lseek(&fsrcs, stream->currentPosition);
-	
+	f_lseek(&fsrcs, stream->offset);
 	f_read(&fsrcs, ptr, bytesToRead, &brs);
-	stream->currentPosition = f_tell(&fsrcs);
 	f_close(&fsrcs);
   return bytesToRead;
 }
@@ -61,19 +59,16 @@ size_t sfio_fwrite(const void *ptr, size_t size, size_t count, sfio_stream_t *st
 	UINT brs;
   size_t bytesToRead;
 	
-	f_open(&fdsts, stream->name_file, FA_OPEN_EXISTING | FA_WRITE);
+	f_open(&fdsts, stream->name_file, FA_OPEN_ALWAYS | FA_WRITE);
 	bytesToRead = size * count;
 
   if (stream->offset + count > stream->size) 
 	{
     bytesToRead = stream->size - stream->offset;
   }
-	
-	printf("write: %s-%d-%d\n", stream->name_file, stream->offset, stream->currentPosition);
-//	f_lseek(&fdsts, stream->currentPosition);
+
 	f_lseek(&fdsts, stream->offset);
 	f_write(&fdsts, ptr, bytesToRead, &brs);
-	stream->currentPosition = f_tell(&fdsts);
 	f_close(&fdsts);
   return bytesToRead;
 }
@@ -100,7 +95,6 @@ janpatch_ctx ctx = {
 	&sfio_fread,
 	&sfio_fwrite,
 	&sfio_fseek,
-	NULL,
 	NULL,
 };
 
@@ -133,12 +127,12 @@ int main(void)
 	
   targets.name_file = FILE_CREATE;
   targets.offset    = 0;
-  targets.size      = 52224;
+  targets.size      = 100000;
 	targets.currentPosition = 0;
 	printf("Run\n");
-  janpatch(ctx, (FILE*)&sources,  (FILE*)&patchs,  (FILE*)&targets);
+  janpatch(ctx, (FIL*)&sources,  (FIL*)&patchs,  (FIL*)&targets);
 	//printf("Kich thuoc file %s la %d bytes\n", (char*)FILE_CREATE, SD_getFileSize(FILE_CREATE)); 
-	printf("Done\n");
+	printf("Done: \n");
   while(1)
 	{
 

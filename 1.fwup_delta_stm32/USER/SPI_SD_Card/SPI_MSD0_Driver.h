@@ -151,7 +151,7 @@ int MSD0_WriteMultiBlock(uint32_t sector, uc8 *buffer, uint32_t NbrOfSector);
 void MSD0_SPI_Configuration(void);
 void MSD0_SPIHighSpeed(uint8_t b_high);
 
-__inline int MSD0_spi_read_write(uint8_t data);
+ int MSD0_spi_read_write(uint8_t data);
 int MSD0_send_command(uint8_t cmd, uint32_t arg, uint8_t crc);
 int MSD0_send_command_hold(uint8_t cmd, uint32_t arg, uint8_t crc);
 int MSD0_read_buffer(uint8_t *buff, uint16_t len, uint8_t release);

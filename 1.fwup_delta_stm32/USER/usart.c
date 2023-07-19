@@ -7,7 +7,7 @@
 #include "usart.h"
 
 
-struct __FILE {
+struct ___FILE {
     int dummy;
 };
  
