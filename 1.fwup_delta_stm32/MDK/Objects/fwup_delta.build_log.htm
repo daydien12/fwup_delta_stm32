@@ -5,11 +5,11 @@
 <h2>Tool Versions:</h2>
 IDE-Version: µVision V5.17.0.0
 Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: bien bien, bien, LIC=EXJT4-FIZR5-2ZGW4-FMLI4-UBXK7-KTER1
+License Information: bien bien, bien, LIC=HN0AE-54DGG-TGQ7T-RNEZM-I0FQP-9VNZS
  
 Tool Versions:
 Toolchain:       MDK-ARM Standard  Version: 5.17
-Toolchain Path:  C:\Keil_v5_17\ARM\ARMCC\Bin
+Toolchain Path:  C:\Keil_v517\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 1 (build 61)
 Assembler:       Armasm.exe V5.06 update 1 (build 61)
 Linker/Locator:  ArmLink.exe V5.06 update 1 (build 61)
@@ -21,13 +21,45 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
 Dialog DLL:      TCM.DLL V1.14.6.0
  
 <h2>Project:</h2>
-C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\fwup_delta.uvprojx
+C:\Users\nhanma\Documents\github\fwup_delta_stm32\1.fwup_delta_stm32\MDK\fwup_delta.uvprojx
 Project File Date:  07/18/2023
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil_v5_17\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil_v517\ARM\ARMCC\Bin'
 Build target 'Target 1'
-".\Objects\fwup_delta.axf" - 0 Error(s), 0 Warning(s).
+compiling ccsbcs.c...
+compiling ff.c...
+..\USER\FATFS_V0.09\src\ff.c(1655): warning:  #111-D: statement is unreachable
+  			w = (w << 8) + b;			/* Create a DBC */
+..\USER\FATFS_V0.09\src\ff.c: 1 warning, 0 errors
+assembling startup_stm32f10x_md.s...
+compiling stm32f10x_gpio.c...
+compiling diskio.c...
+compiling stm32f10x_spi.c...
+compiling misc.c...
+compiling SPI_MSD0_Driver.c...
+compiling lib_sd.c...
+compiling main.c...
+..\USER\main.c(100): warning:  #144-D: a value of type "size_t (*)(void *, size_t, size_t, sfio_stream_t *)" cannot be used to initialize an entity of type "size_t (*)(void *, size_t, size_t, FILE *)"
+  	&sfio_fread,
+..\USER\main.c(101): warning:  #144-D: a value of type "size_t (*)(const void *, size_t, size_t, sfio_stream_t *)" cannot be used to initialize an entity of type "size_t (*)(const void *, size_t, size_t, FILE *)"
+  	&sfio_fwrite,
+..\USER\main.c(102): warning:  #144-D: a value of type "int (*)(sfio_stream_t *, long, int)" cannot be used to initialize an entity of type "int (*)(FILE *, long, int)"
+  	&sfio_fseek,
+..\USER\main.c(113): warning:  #177-D: variable "source" was declared but never referenced
+  	FIL source, patch, target;
+..\USER\main.c(113): warning:  #177-D: variable "patch" was declared but never referenced
+  	FIL source, patch, target;
+..\USER\main.c(113): warning:  #177-D: variable "target" was declared but never referenced
+  	FIL source, patch, target;
+..\USER\main.c: 6 warnings, 0 errors
+compiling usart.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_usart.c...
+compiling system_stm32f10x.c...
+linking...
+Program Size: Code=15344 RO-data=1684 RW-data=212 ZI-data=7108  
+".\Objects\fwup_delta.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -39,55 +71,55 @@ Package Vendor: ARM
 
 Package Vendor: Keil
                 http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.1.0.pack
-                Keil::Device:StdPeriph Drivers:RCC:3.5.0
+                Keil::Device:StdPeriph Drivers:USART:3.5.0
                 STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
-   * Component: RCC Version: 3.5.0
    * Component: USART Version: 3.5.0
-   * Component: SPI Version: 3.5.0
-   * Component: GPIO Version: 3.5.0
    * Component: Startup Version: 1.0.0
+   * Component: GPIO Version: 3.5.0
    * Component: Framework Version: 3.5.1
+   * Component: RCC Version: 3.5.0
+   * Component: SPI Version: 3.5.0
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE
-  C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8
-  C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include
-  C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include
-  C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc
+  C:\Users\nhanma\Documents\github\fwup_delta_stm32\1.fwup_delta_stm32\MDK\RTE
+  C:\Users\nhanma\Documents\github\fwup_delta_stm32\1.fwup_delta_stm32\MDK\RTE\Device\STM32F103C8
+  C:\Keil_v517\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include
+  C:\Keil_v517\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include
+  C:\Keil_v517\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc
 
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:4.3.0
 
-   * Component: Keil::Device:StdPeriph Drivers:RCC:3.5.0
-      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_rcc.c
-
    * Component: Keil::Device:StdPeriph Drivers:USART:3.5.0
-      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_usart.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_usart.c
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_usart.h
 
-   * Component: Keil::Device:StdPeriph Drivers:SPI:3.5.0
-      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_spi.h
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_spi.c
+   * Component: Keil::Device:Startup:1.0.0
+      Source file:   Device\Source\ARM\STM32F1xx_OPT.s
+      Source file:   Device\Source\system_stm32f10x.c
+      Source file:   Device\Source\ARM\startup_stm32f10x_md.s
+      Include file:  RTE_Driver\Config\RTE_Device.h
 
    * Component: Keil::Device:StdPeriph Drivers:GPIO:3.5.0
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_gpio.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
 
-   * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device\Source\ARM\STM32F1xx_OPT.s
-      Source file:   Device\Source\ARM\startup_stm32f10x_md.s
-      Source file:   Device\Source\system_stm32f10x.c
-      Include file:  RTE_Driver\Config\RTE_Device.h
-
    * Component: Keil::Device:StdPeriph Drivers:Framework:3.5.1
-      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
-      Source file:   Device\StdPeriph_Driver\src\misc.c
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
       Include file:  Device\StdPeriph_Driver\inc\misc.h
       Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
-      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
-Build Time Elapsed:  00:00:00
+      Source file:   Device\StdPeriph_Driver\src\misc.c
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
+
+   * Component: Keil::Device:StdPeriph Drivers:RCC:3.5.0
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_rcc.c
+
+   * Component: Keil::Device:StdPeriph Drivers:SPI:3.5.0
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_spi.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_spi.c
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

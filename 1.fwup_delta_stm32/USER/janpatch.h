@@ -16,10 +16,10 @@
 // detect POSIX, and use FILE* in that case
 #if defined(JANPATCH_STREAM) && (defined (__unix__) || (defined (__APPLE__) && defined (__MACH__)))
 #include <stdio.h>
-#define JANPATCH_STREAM     FIL
+#define JANPATCH_STREAM     FILE
 #elif !defined(JANPATCH_STREAM)
 #include <stdio.h>
-#define JANPATCH_STREAM     FIL
+#define JANPATCH_STREAM     FILE
 //#error "JANPATCH_STREAM not defined, and not on POSIX system. Please specify the JANPATCH_STREAM macro"
 #endif
 
