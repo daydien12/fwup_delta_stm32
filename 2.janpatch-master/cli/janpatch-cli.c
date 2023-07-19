@@ -7,9 +7,10 @@
 #define FILE_PATCH  "demo/blinky-k64f.patch"
 #define FILE_CREATE "./blinky-k64f-patched.bin"
 
-static unsigned char source_buf[4096];
-static unsigned char target_buf[4096];
-static unsigned char patch_buf[4096];
+#define SIZE_BUFFER 1024
+static unsigned char source_buf[SIZE_BUFFER];
+static unsigned char target_buf[SIZE_BUFFER];
+static unsigned char patch_buf[SIZE_BUFFER];
 
 typedef struct {
   uint8_t *file;
@@ -109,12 +110,12 @@ int main() {
 
   targets.file   = (uint8_t*)target;
   targets.offset = 0;
-  targets.size   =  100000;
+  targets.size   =  0;
 
   janpatch_ctx ctx = {
-    { source_buf, 4096 }, // source buffer
-    { target_buf, 4096 }, // patch buffer
-    { patch_buf, 4096 }, // target buffer
+    { source_buf, SIZE_BUFFER, "OLD" }, // source buffer
+    { target_buf, SIZE_BUFFER,  "PATCH"}, // patch buffer
+    { patch_buf, SIZE_BUFFER, "TARGET" }, // target buffer
 
     &sfio_fread,
     &sfio_fwrite,

@@ -24,10 +24,12 @@
 typedef struct {
     unsigned char*   buffer;
     size_t           size;
+    char *file_name;
     uint32_t         current_page;
     size_t           current_page_size;
     JANPATCH_STREAM* stream;
     long int         position;
+    
 } janpatch_buffer;
 
 typedef struct {
@@ -57,15 +59,30 @@ enum {
     JANPATCH_OPERATION_EQL = 0xa3,
     JANPATCH_OPERATION_BKT = 0xa2
 };
-
+uint32_t count_write = 0, count_read = 0;
 /**
  * Read a buffer off the stream
  */
 static size_t jp_fread(janpatch_ctx *ctx, void *ptr, size_t size, size_t count, janpatch_buffer *buffer) {
     ctx->fseek(buffer->stream, buffer->position, SEEK_SET);
-
     size_t bytes_read = ctx->fread(ptr, size, count, buffer->stream);
-
+    
+    uint8_t *arr;
+    arr =  (uint8_t*)ptr;
+    int countss = 1;
+    printf("R: %s-%d-%d \n",buffer->file_name, bytes_read, count_read);
+    
+    for(int i=0; i<bytes_read; i++)
+    {
+        printf("%02x ", arr[i]);
+        if(countss >= 16)
+        {
+             printf("\n");
+             countss = 0;
+        }
+        countss ++;
+    }
+    count_read++;
     buffer->position += bytes_read;
 
     return bytes_read;
@@ -78,7 +95,21 @@ static size_t jp_fwrite(janpatch_ctx *ctx, const void *ptr, size_t size, size_t 
     ctx->fseek(buffer->stream, buffer->position, SEEK_SET);
 
     size_t bytes_written = ctx->fwrite(ptr, size, count, buffer->stream);
-
+    // uint8_t *arr;
+    // arr =  (uint8_t*)ptr;
+    // int countss = 1;
+    // printf("W: %s-%d-%d \n",buffer->file_name, bytes_written, count_write);
+    // count_write++;
+    // for(int i=0; i<bytes_written; i++)
+    // {
+    //     printf("%02x ", arr[i]);
+    //     if(countss >= 16)
+    //     {
+    //          printf("\n");
+    //          countss = 0;
+    //     }
+    //     countss ++;
+    // }
     buffer->position += bytes_written;
 
     return bytes_written;
