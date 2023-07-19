@@ -1,0 +1,19 @@
+--cpu Cortex-M3
+".\objects\spi_msd0_driver.o"
+".\objects\ccsbcs.o"
+".\objects\diskio.o"
+".\objects\ff.o"
+".\objects\lib_sd.o"
+".\objects\main.o"
+".\objects\usart.o"
+".\objects\misc.o"
+".\objects\stm32f10x_gpio.o"
+".\objects\stm32f10x_rcc.o"
+".\objects\stm32f10x_spi.o"
+".\objects\stm32f10x_usart.o"
+".\objects\startup_stm32f10x_md.o"
+".\objects\system_stm32f10x.o"
+--strict --scatter ".\Objects\fwup_delta.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\fwup_delta.map" -o .\Objects\fwup_delta.axf

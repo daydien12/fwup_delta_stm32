@@ -1,0 +1,252 @@
+
+/* Includes ------------------------------------------------------------------*/
+
+#include <stdio.h>
+#include "usart.h"
+#include "ff.h"
+#include "lib_sd.h"
+#include "SPI_MSD0_Driver.h"
+#include <string.h>
+#include "janpatch.h"
+FATFS fs;             /* Khu vực làm việc (hệ thống tệp) cho ổ đĩa logic */
+FIL fsrc, fdst;      /* file objects */
+UINT br, bw;
+
+uint8_t textFileBuffer[] = "\r\nChinese and English test strings Nguyen Qunag Bien \r\n";
+
+#define FILE_OLD    "demo/blinky-k64f-old.bin"
+#define FILE_PATCH  "demo/blinky-k64f.patch"
+#define FILE_CREATE "demo/bien.bin"
+#define FILE_TEST "FILE_NAME4.txt"
+
+static unsigned char source_buf[1024];
+static unsigned char target_buf[1024];
+static unsigned char patch_buf[1024];
+
+typedef struct {
+  FIL file;
+  size_t offset;
+  size_t size;
+	UINT br;
+} sfio_stream_t;
+
+
+
+size_t sfio_fread(void* ptr, size_t size, size_t count, sfio_stream_t* stream)
+{
+  size_t bytesToRead = size * count;
+
+  if (stream->offset + count > stream->size)
+  {
+    bytesToRead = stream->size - stream->offset;
+  }
+	f_read(&stream->file, ptr, bytesToRead, &stream->br);
+  return bytesToRead;
+}
+
+size_t sfio_fwrite(const void *ptr, size_t size, size_t count, sfio_stream_t *stream)
+{
+  size_t bytesToRead = size * count;
+  if (stream->offset + count > stream->size) {
+    count = stream->size - stream->offset;
+  }
+	f_write(&stream->file, ptr, bytesToRead, &stream->br);
+  return bytesToRead;
+}
+
+int sfio_fseek(sfio_stream_t *stream, long int offset, int origin) {
+  if (offset > stream->size) {
+    return -1;
+  } else {
+    stream->offset = offset;
+  }
+  return 0;
+}
+
+janpatch_ctx ctx = {
+	{source_buf, 1024}, // source buffer
+	{target_buf, 1024}, // patch buffer
+	{patch_buf , 1024}, // target buffer
+
+	&sfio_fread,
+	&sfio_fwrite,
+	&sfio_fseek,
+	NULL,
+};
+
+int main(void)
+{
+	
+	sfio_stream_t sources;
+  sfio_stream_t patchs;
+  sfio_stream_t targets;
+	FIL source, patch, target;
+	char ar[100];
+  SystemInit();                     // Khởi tạo Clock hệ thống
+  db_DEBUG_Init(9600);            // Khởi tạo bộ USART 1
+  MSD0_SPI_Configuration();         // Định cấu hình giao diện SPI 1
+	
+  res = f_mount(0, &fs);            // Gắn kết hệ thống tệp
+  if (res != FR_OK) {
+    printf("mount filesystem 0 failed : %d\n\r", res);
+  }
+	res = f_open(&source, FILE_OLD,  FA_OPEN_EXISTING | FA_READ);
+	if ( res != FR_OK)
+	{
+		printf("read file error source");
+	}
+	else
+	{
+			printf("read file source done\n");
+	}
+	sources.file   = source;
+  sources.offset = 0;
+  sources.size   =  47352;
+	sources.br     = br;
+	
+	res = f_open(&patch, FILE_PATCH, FA_OPEN_EXISTING | FA_READ);
+	if (res!= FR_OK)
+	{
+		printf("read file error patchs");
+	}
+	else
+	{
+		printf("read file patch done\n");
+	}
+  patchs.file   = patch;
+  patchs.offset = 0;
+  patchs.size   =  8580;
+	patchs.br     = br;
+	
+	res = f_open(&target, FILE_CREATE, FA_CREATE_ALWAYS | FA_WRITE);
+	if (res != FR_OK)
+	{
+		printf("read file error target");
+	}
+	else
+	{
+			printf("read file target done\n");
+	}
+	
+  targets.file   = target;
+  targets.offset = 0;
+  targets.size   = 0;
+	targets.br     = br;
+	printf("Kich thuoc file %s la %lu bytes\n", "test.bin", 1); 
+	
+  //janpatch(ctx, (FIL*)&sources,  (FIL*)&patchs,  (FIL*)&targets);
+	
+	printf("Kich thuoc file %s la %lu bytes\n", "test.bin", 1); 
+
+  while (1)
+  {
+
+  }
+}
+
+
+/*
+
+
+/* Includes ------------------------------------------------------------------*/
+
+#include <stdio.h>
+#include "usart.h"
+#include "ff.h"
+#include "lib_sd.h"
+#include "SPI_MSD0_Driver.h"
+#include <string.h>
+#include "janpatch.h"
+FATFS fs;             /* Khu vực làm việc (hệ thống tệp) cho ổ đĩa logic */
+FIL fsrc, fdst;      /* file objects */
+UINT br, bw;
+
+char path0[512] = "";
+char buffer[4000];   /* file copy buffer */
+uint8_t textFileBuffer[] = "\r\nChinese and English test strings Nguyen Qunag Bien \r\n";
+
+#define FILE_OLD    "demo/blinky-k64f-old.bin"
+#define FILE_PATCH  "demo/blinky-k64f.patch"
+#define FILE_CREATE "demo/bien.bin"
+
+
+typedef struct {
+  uint8_t *file;
+  size_t offset;
+  size_t size;
+} sfio_stream_t;
+
+
+
+
+int main(void)
+{
+  SystemInit();                     // Khởi tạo Clock hệ thống
+  db_DEBUG_Init(9600);            // Khởi tạo bộ USART 1
+  MSD0_SPI_Configuration();         // Định cấu hình giao diện SPI 1
+	
+
+	
+  res = f_mount(0, &fs);            // Gắn kết hệ thống tệp
+  if (res != FR_OK) {
+    printf("mount filesystem 0 failed : %d\n\r", res);
+  }
+
+  // Viết kiểm tra tệp
+  printf("write file test......\n\r");
+  res = f_open(&fdst, "FILE_NAME4.txt", FA_CREATE_ALWAYS | FA_WRITE);
+  if (res != FR_OK) 
+	{
+    printf("open file error : %d\n\r", res);
+  }
+  else
+  {
+    res = f_write(&fdst, textFileBuffer, sizeof(textFileBuffer), &bw);  /* Ghi nó vào tệp dst */
+    if (res == FR_OK)
+    {
+      printf("write data ok! %d\n\r", bw);
+    }
+    else
+    {
+      printf("write data error : %d\n\r", res);
+    }
+    /*Đóng tập tin*/
+    f_close(&fdst);
+  }
+
+  // Đọc thử tệp
+  printf("read file test......\n\r");
+  res = f_open(&fsrc, "FILE_NAME4.txt", FA_OPEN_EXISTING | FA_READ);
+  if (res != FR_OK)
+  {
+    printf("open file error : %d\n\r", res);
+  }
+  else
+  {
+    res = f_read(&fsrc, buffer, 300, &br);     /* Đọc một đoạn của tệp src */
+    if (res == FR_OK)
+    {
+      printf("read data num : %d\n\r", br);
+      printf("%s\n\r", buffer);
+    }
+    else
+    {
+      printf("read file error : %d\n\r", res);
+    }
+    /*Đóng tập tin*/
+    f_close(&fsrc);
+  }
+	printf("Kich thuoc file %s la %lu bytes\n", "test.bin", SD_getFileSize(FILE_OLD)); 
+
+  //  // Quét các tệp hiện có
+  //printf("\n\rbegin scan files path 0......\n\r");
+  //scan_files(path0);
+
+  //SD_TotalSize("gpio_blynk_new.bin");// Nhận dung lượng SD
+  while (1)
+  {
+
+  }
+}
+
+*/

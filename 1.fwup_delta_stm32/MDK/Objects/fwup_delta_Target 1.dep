@@ -1,0 +1,210 @@
+Dependencies for Project 'fwup_delta', Target 'Target 1': (DO NOT MODIFY !)
+F (..\USER\SPI_SD_Card\SPI_MSD0_Driver.c)(0x610F523E)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\MDK -I..\USER\FATFS_V0.09\src -I..\USER\SPI_SD_Card-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8-I C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F10X_MD-o .\objects\spi_msd0_driver.o --omf_browse .\objects\spi_msd0_driver.crf --depend .\objects\spi_msd0_driver.d)
+I (..\USER\SPI_SD_Card\SPI_MSD0_Driver.h)(0x610F523E)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h)(0x53BA1B70)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\RTE_Components.h)(0x64B621A6)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm3.h)(0x5625C51C)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdint.h)(0x55DB3990)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmInstr.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\cmsis_armcc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\system_stm32f10x.h)(0x4F1E3C4C)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x52F9FBE0)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9F930)
+I (..\USER\SPI_SD_Card\SPI_MSD1_Driver.h)(0x610F3362)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdio.h)(0x55DB3986)
+F (..\USER\FATFS_V0.09\src\ccsbcs.c)(0x6074A09A)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\MDK -I..\USER\FATFS_V0.09\src -I..\USER\SPI_SD_Card-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8-I C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F10X_MD-o .\objects\ccsbcs.o --omf_browse .\objects\ccsbcs.crf --depend .\objects\ccsbcs.d)
+I (..\USER\FATFS_V0.09\src\ff.h)(0x4E63AA66)
+I (..\USER\FATFS_V0.09\src\integer.h)(0x4BD25B42)
+I (..\USER\FATFS_V0.09\src\ffconf.h)(0x5018122C)
+F (..\USER\FATFS_V0.09\src\diskio.c)(0x610F529A)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\MDK -I..\USER\FATFS_V0.09\src -I..\USER\SPI_SD_Card-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8-I C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F10X_MD-o .\objects\diskio.o --omf_browse .\objects\diskio.crf --depend .\objects\diskio.d)
+I (..\USER\FATFS_V0.09\src\diskio.h)(0x4D210632)
+I (..\USER\FATFS_V0.09\src\integer.h)(0x4BD25B42)
+I (..\USER\FATFS_V0.09\src\ffconf.h)(0x5018122C)
+I (..\USER\SPI_SD_Card\SPI_MSD0_Driver.h)(0x610F523E)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h)(0x53BA1B70)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\RTE_Components.h)(0x64B621A6)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm3.h)(0x5625C51C)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdint.h)(0x55DB3990)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmInstr.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\cmsis_armcc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\system_stm32f10x.h)(0x4F1E3C4C)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x52F9FBE0)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9F930)
+I (..\USER\SPI_SD_Card\SPI_MSD1_Driver.h)(0x610F3362)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdio.h)(0x55DB3986)
+F (..\USER\FATFS_V0.09\src\ff.c)(0x64AF76AE)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\MDK -I..\USER\FATFS_V0.09\src -I..\USER\SPI_SD_Card-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8-I C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F10X_MD-o .\objects\ff.o --omf_browse .\objects\ff.crf --depend .\objects\ff.d)
+I (..\USER\FATFS_V0.09\src\ff.h)(0x4E63AA66)
+I (..\USER\FATFS_V0.09\src\integer.h)(0x4BD25B42)
+I (..\USER\FATFS_V0.09\src\ffconf.h)(0x5018122C)
+I (..\USER\FATFS_V0.09\src\diskio.h)(0x4D210632)
+F (..\USER\lib_sd.c)(0x64AF763A)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\MDK -I..\USER\FATFS_V0.09\src -I..\USER\SPI_SD_Card-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8-I C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F10X_MD-o .\objects\lib_sd.o --omf_browse .\objects\lib_sd.crf --depend .\objects\lib_sd.d)
+I (..\USER\lib_sd.h)(0x64AF75C8)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x52F9FBE0)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\RTE_Components.h)(0x64B621A6)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h)(0x53BA1B70)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm3.h)(0x5625C51C)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdint.h)(0x55DB3990)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmInstr.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\cmsis_armcc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\system_stm32f10x.h)(0x4F1E3C4C)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9F930)
+I (..\USER\usart.h)(0x64AF6BFA)
+I (..\USER\FATFS_V0.09\src\ff.h)(0x4E63AA66)
+I (..\USER\FATFS_V0.09\src\integer.h)(0x4BD25B42)
+I (..\USER\FATFS_V0.09\src\ffconf.h)(0x5018122C)
+I (..\USER\SPI_SD_Card\SPI_MSD1_Driver.h)(0x610F3362)
+I (C:\Keil_v5_17\ARM\ARMCC\include\string.h)(0x55DB3988)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdio.h)(0x55DB3986)
+F (..\USER\main.c)(0x64B688BA)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\MDK -I..\USER\FATFS_V0.09\src -I..\USER\SPI_SD_Card-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8-I C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F10X_MD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdio.h)(0x55DB3986)
+I (..\USER\usart.h)(0x64AF6BFA)
+I (..\USER\FATFS_V0.09\src\ff.h)(0x4E63AA66)
+I (..\USER\FATFS_V0.09\src\integer.h)(0x4BD25B42)
+I (..\USER\FATFS_V0.09\src\ffconf.h)(0x5018122C)
+I (..\USER\lib_sd.h)(0x64AF75C8)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x52F9FBE0)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\RTE_Components.h)(0x64B621A6)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h)(0x53BA1B70)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm3.h)(0x5625C51C)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdint.h)(0x55DB3990)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmInstr.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\cmsis_armcc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\system_stm32f10x.h)(0x4F1E3C4C)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9F930)
+I (..\USER\SPI_SD_Card\SPI_MSD1_Driver.h)(0x610F3362)
+I (C:\Keil_v5_17\ARM\ARMCC\include\string.h)(0x55DB3988)
+I (..\USER\SPI_SD_Card\SPI_MSD0_Driver.h)(0x610F523E)
+I (..\USER\janpatch.h)(0x64B64BB7)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdbool.h)(0x55DB3986)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdlib.h)(0x55DB3988)
+F (..\USER\usart.c)(0x64AF6CA4)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\MDK -I..\USER\FATFS_V0.09\src -I..\USER\SPI_SD_Card-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8-I C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F10X_MD-o .\objects\usart.o --omf_browse .\objects\usart.crf --depend .\objects\usart.d)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h)(0x53BA1B70)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\RTE_Components.h)(0x64B621A6)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm3.h)(0x5625C51C)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdint.h)(0x55DB3990)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmInstr.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\cmsis_armcc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\system_stm32f10x.h)(0x4F1E3C4C)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x52F9FBE0)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\ARMCC\include\string.h)(0x55DB3988)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdio.h)(0x55DB3986)
+I (..\USER\usart.h)(0x64AF6BFA)
+F (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\src\misc.c)(0x52F9F930)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\MDK -I..\USER\FATFS_V0.09\src -I..\USER\SPI_SD_Card-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8-I C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F10X_MD-o .\objects\misc.o --omf_browse .\objects\misc.crf --depend .\objects\misc.d)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h)(0x53BA1B70)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\RTE_Components.h)(0x64B621A6)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm3.h)(0x5625C51C)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdint.h)(0x55DB3990)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmInstr.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\cmsis_armcc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\system_stm32f10x.h)(0x4F1E3C4C)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x52F9FBE0)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9F930)
+F (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\src\stm32f10x_gpio.c)(0x52F9F930)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\MDK -I..\USER\FATFS_V0.09\src -I..\USER\SPI_SD_Card-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8-I C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F10X_MD-o .\objects\stm32f10x_gpio.o --omf_browse .\objects\stm32f10x_gpio.crf --depend .\objects\stm32f10x_gpio.d)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h)(0x53BA1B70)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\RTE_Components.h)(0x64B621A6)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm3.h)(0x5625C51C)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdint.h)(0x55DB3990)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmInstr.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\cmsis_armcc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\system_stm32f10x.h)(0x4F1E3C4C)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x52F9FBE0)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9F930)
+F (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\src\stm32f10x_rcc.c)(0x52F9F930)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\MDK -I..\USER\FATFS_V0.09\src -I..\USER\SPI_SD_Card-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8-I C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F10X_MD-o .\objects\stm32f10x_rcc.o --omf_browse .\objects\stm32f10x_rcc.crf --depend .\objects\stm32f10x_rcc.d)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h)(0x53BA1B70)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\RTE_Components.h)(0x64B621A6)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm3.h)(0x5625C51C)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdint.h)(0x55DB3990)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmInstr.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\cmsis_armcc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\system_stm32f10x.h)(0x4F1E3C4C)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x52F9FBE0)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9F930)
+F (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\src\stm32f10x_spi.c)(0x52F9F930)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\MDK -I..\USER\FATFS_V0.09\src -I..\USER\SPI_SD_Card-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8-I C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F10X_MD-o .\objects\stm32f10x_spi.o --omf_browse .\objects\stm32f10x_spi.crf --depend .\objects\stm32f10x_spi.d)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h)(0x53BA1B70)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\RTE_Components.h)(0x64B621A6)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm3.h)(0x5625C51C)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdint.h)(0x55DB3990)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmInstr.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\cmsis_armcc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\system_stm32f10x.h)(0x4F1E3C4C)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x52F9FBE0)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9F930)
+F (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\src\stm32f10x_usart.c)(0x52F9F930)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\MDK -I..\USER\FATFS_V0.09\src -I..\USER\SPI_SD_Card-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8-I C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F10X_MD-o .\objects\stm32f10x_usart.o --omf_browse .\objects\stm32f10x_usart.crf --depend .\objects\stm32f10x_usart.d)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h)(0x53BA1B70)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\RTE_Components.h)(0x64B621A6)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm3.h)(0x5625C51C)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdint.h)(0x55DB3990)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmInstr.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\cmsis_armcc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\system_stm32f10x.h)(0x4F1E3C4C)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x52F9FBE0)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9F930)
+F (RTE\Device\STM32F103C8\RTE_Device.h)(0x56F9EC6C)()
+F (RTE\Device\STM32F103C8\startup_stm32f10x_md.s)(0x4F1E3C4C)(--cpu Cortex-M3 -g --apcs=interwork -I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8-I C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc--pd "__UVISION_VERSION SETA 517" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1"--list .\listings\startup_stm32f10x_md.lst --xref -o .\objects\startup_stm32f10x_md.o --depend .\objects\startup_stm32f10x_md.d)
+F (RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x52F9FBE0)()
+F (RTE\Device\STM32F103C8\system_stm32f10x.c)(0x4F1E3C4C)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I..\MDK -I..\USER\FATFS_V0.09\src -I..\USER\SPI_SD_Card-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE-I C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8-I C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F10X_MD-o .\objects\system_stm32f10x.o --omf_browse .\objects\system_stm32f10x.crf --depend .\objects\system_stm32f10x.d)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h)(0x53BA1B70)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\RTE_Components.h)(0x64B621A6)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm3.h)(0x5625C51C)
+I (C:\Keil_v5_17\ARM\ARMCC\include\stdint.h)(0x55DB3990)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmInstr.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\cmsis_armcc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h)(0x5625B160)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\system_stm32f10x.h)(0x4F1E3C4C)
+I (C:\Users\nguye\OneDrive\Desktop\diff\fwup_delta_stm32\MDK\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x52F9FBE0)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9F930)
+I (C:\Keil_v5_17\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9F930)
