@@ -1,0 +1,7 @@
+1.File jdiff-js-master
+ vào đường dẫn jdiff-js-master\win32
+ .\JDiff.exe <base-image> <new-image> <output-patch-bin>
+
+2.File janpatch-master
+ janpatch-master
+ ./janpatch-cli demo/gpio_blynk_old.bin demo/blynk1.patch gpio.bin

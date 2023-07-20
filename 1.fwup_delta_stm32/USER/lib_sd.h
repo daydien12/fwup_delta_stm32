@@ -13,6 +13,6 @@ extern FRESULT res;
 /* Nút b?t d?u du?c quét (còn du?c s? d?ng nhu khu v?c làm vi?c) */
 FRESULT  SD_ScanFiles (char* path);         	
 uint32_t SD_TotalSize(char *path);
-uint16_t SD_getFileSize(const char* filename);
+DWORD SD_getFileSize(const char* filename);
 
 #endif/* __LID_SD_H */

@@ -104,14 +104,21 @@ uint32_t SD_TotalSize(char *path)
   }
 }
 
-uint16_t SD_getFileSize(const char* filename)
+DWORD SD_getFileSize(const char* filename)
 {
-	FILINFO fno;
-  uint16_t size_file = 0;
-  res = f_stat(filename, &fno);
-  if (res == FR_OK)
+	DWORD fileSize = 0;
+  FIL file;
+  if (f_open(&file, filename, FA_READ) == FR_OK)
   {
-    size_file = fno.fsize;
+    // Get the size of the file
+    fileSize = f_size(&file);
+    f_close(&file); // Close the file when done
+
+    // Now you have the fileSize in bytes, you can do whatever you want with it
   }
-  return size_file;
+  else
+  {
+    // Handle file open error
+  }
+  return fileSize;
 }
