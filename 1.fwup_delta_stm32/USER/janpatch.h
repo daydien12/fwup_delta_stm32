@@ -1,5 +1,9 @@
-#ifndef _JANPATCH_H
-#define _JANPATCH_H
+#ifndef _JANPATCH_H_
+#define _JANPATCH_H_
+
+#ifdef __cplusplus
+extern "C"{
+#endif
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -15,14 +19,8 @@
 #define JANPATCH_ERROR(...)  printf(__VA_ARGS__)
 #endif
 
-// detect POSIX, and use FILE* in that case
-#if !defined(JANPATCH_STREAM) && (defined (__unix__) || (defined (__APPLE__) && defined (__MACH__)))
-#include <stdio.h>
-#define JANPATCH_STREAM     FILE
-#elif !defined(JANPATCH_STREAM)
-//#error "JANPATCH_STREAM not defined, and not on POSIX system. Please specify the JANPATCH_STREAM macro"
-#endif
 #define JANPATCH_STREAM     FIL
+
 typedef struct {
     unsigned char*   buffer;
     size_t           size;
@@ -409,5 +407,9 @@ int janpatch(janpatch_ctx ctx, JANPATCH_STREAM *source, JANPATCH_STREAM *patch, 
 
     return 0;
 }
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // _JANPATCH_H

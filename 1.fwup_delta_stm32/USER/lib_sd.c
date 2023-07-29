@@ -122,3 +122,14 @@ DWORD SD_getFileSize(const char* filename)
   }
   return fileSize;
 }
+
+uint32_t SD_WriteFile(const char *file_name, const void *ptr, size_t size, size_t offset)
+{
+	FIL fdsts;
+  UINT brs;
+  f_open(&fdsts, file_name, FA_OPEN_ALWAYS | FA_WRITE);
+  f_lseek(&fdsts, offset);
+  f_write(&fdsts, ptr, size, &brs);
+  f_close(&fdsts);
+  return size;
+}
