@@ -15,5 +15,7 @@
   ..\USER\usart.h ..\USER\FATFS_V0.09\src\ff.h \
   ..\USER\FATFS_V0.09\src\integer.h ..\USER\FATFS_V0.09\src\ffconf.h \
   ..\USER\SPI_SD_Card\SPI_MSD1_Driver.h \
+  ..\USER\SPI_SD_Card\SPI_MSD0_Driver.h \
+  ..\USER\SPI_SD_Card\SPI_MSD1_Driver.h \
   C:\Keil_v536\ARM\ARMCLANG\Bin\..\include\string.h \
   C:\Keil_v536\ARM\ARMCLANG\Bin\..\include\stdio.h

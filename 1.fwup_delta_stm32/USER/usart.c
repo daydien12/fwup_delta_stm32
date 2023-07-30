@@ -6,6 +6,7 @@
 #include "stdio.h"
 #include "usart.h"
 
+#define IRQ_UART 0
 
 struct ___FILE {
     int dummy;
@@ -119,6 +120,7 @@ USART_InitTypeDef USART_init1;
 			db_DEBUG_Putchar(Number);
 	}
 	
+#if IRQ_UART
 //==============================Ham ngat UART==============================
 	void USART1_IRQHandler()
 	{
@@ -140,4 +142,4 @@ USART_InitTypeDef USART_init1;
 		}
 		USART_ClearITPendingBit(USART1, USART_IT_RXNE);
 	}
-
+#endif

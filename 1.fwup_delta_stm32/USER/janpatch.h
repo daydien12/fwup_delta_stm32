@@ -1,10 +1,16 @@
-#ifndef _JANPATCH_H
-#define _JANPATCH_H
+#ifndef _JANPATCH_H_
+#define _JANPATCH_H_
+
+#ifdef __cplusplus
+extern "C"{
+#endif
 
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "ff.h"
+
 #ifndef JANPATCH_DEBUG
 #define JANPATCH_DEBUG(...)  while (0) {} // printf(__VA_ARGS__)
 #endif
@@ -13,24 +19,15 @@
 #define JANPATCH_ERROR(...)  printf(__VA_ARGS__)
 #endif
 
-// detect POSIX, and use FILE* in that case
-#if !defined(JANPATCH_STREAM) && (defined (__unix__) || (defined (__APPLE__) && defined (__MACH__)))
-#include <stdio.h>
-#define JANPATCH_STREAM     FILE
-#elif !defined(JANPATCH_STREAM)
-//#error "JANPATCH_STREAM not defined, and not on POSIX system. Please specify the JANPATCH_STREAM macro"
-
-#endif
 #define JANPATCH_STREAM     FIL
+
 typedef struct {
     unsigned char*   buffer;
     size_t           size;
-    char *file_name;
     uint32_t         current_page;
     size_t           current_page_size;
     JANPATCH_STREAM* stream;
     long int         position;
-    
 } janpatch_buffer;
 
 typedef struct {
@@ -60,30 +57,15 @@ enum {
     JANPATCH_OPERATION_EQL = 0xa3,
     JANPATCH_OPERATION_BKT = 0xa2
 };
-uint32_t count_write = 0, count_read = 0;
+
 /**
  * Read a buffer off the stream
  */
 static size_t jp_fread(janpatch_ctx *ctx, void *ptr, size_t size, size_t count, janpatch_buffer *buffer) {
     ctx->fseek(buffer->stream, buffer->position, SEEK_SET);
+
     size_t bytes_read = ctx->fread(ptr, size, count, buffer->stream);
-    
-    uint8_t *arr;
-    arr =  (uint8_t*)ptr;
-    int countss = 1;
-    //printf("R: %s-%d-%d \n",buffer->file_name, bytes_read, count_read);
-    
-//    for(int i=0; i<bytes_read; i++)
-//    {
-//        printf("%02x ", arr[i]);
-//        if(countss >= 16)
-//        {
-//             printf("\n");
-//             countss = 0;
-//        }
-//        countss ++;
-//    }
-    count_read++;
+
     buffer->position += bytes_read;
 
     return bytes_read;
@@ -96,23 +78,7 @@ static size_t jp_fwrite(janpatch_ctx *ctx, const void *ptr, size_t size, size_t 
     ctx->fseek(buffer->stream, buffer->position, SEEK_SET);
 
     size_t bytes_written = ctx->fwrite(ptr, size, count, buffer->stream);
-	
-    // uint8_t *arr;
-    // arr =  (uint8_t*)ptr;
-    // int countss = 1;
-    // printf("W: %s-%d-%d \n",buffer->file_name, bytes_written, count_write);
-     //count_write++;
-    // for(int i=0; i<bytes_written; i++)
-    // {
-    //     printf("%02x ", arr[i]);
-    //     if(countss >= 16)
-    //     {
-    //          printf("\n");
-    //          countss = 0;
-    //     }
-    //     countss ++;
-    // }
-	
+
     buffer->position += bytes_written;
 
     return bytes_written;
@@ -441,5 +407,9 @@ int janpatch(janpatch_ctx ctx, JANPATCH_STREAM *source, JANPATCH_STREAM *patch, 
 
     return 0;
 }
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // _JANPATCH_H

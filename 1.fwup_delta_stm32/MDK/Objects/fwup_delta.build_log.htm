@@ -21,39 +21,13 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
 Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
-C:\Users\nhanma\Documents\github\fwup_delta_stm32\1.fwup_delta_stm32\MDK\fwup_delta.uvprojx
-Project File Date:  07/19/2023
+C:\Users\nhanma\Desktop\1.fwup_delta_stm32\MDK\fwup_delta.uvprojx
+Project File Date:  07/29/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.16', folder: 'C:\Keil_v536\ARM\ARMCLANG\Bin'
-Rebuild target 'Target 1'
-compiling ccsbcs.c...
-compiling usart.c...
-../USER/main.c(95): warning: incompatible function pointer types initializing 'size_t (*)(void *, size_t, size_t, FIL *)' (aka 'unsigned int (*)(void *, unsigned int, unsigned int, FIL *)') with an expression of type 'size_t (*)(void *, size_t, size_t, sfio_stream_t *)' (aka 'unsigned int (*)(void *, unsigned int, unsigned int, sfio_stream_t *)') [-Wincompatible-function-pointer-types]
-        &sfio_fread,
-        ^~~~~~~~~~~
-../USER/main.c(96): warning: incompatible function pointer types initializing 'size_t (*)(const void *, size_t, size_t, FIL *)' (aka 'unsigned int (*)(const void *, unsigned int, unsigned int, FIL *)') with an expression of type 'size_t (*)(const void *, size_t, size_t, sfio_stream_t *)' (aka 'unsigned int (*)(const void *, unsigned int, unsigned int, sfio_stream_t *)') [-Wincompatible-function-pointer-types]
-        &sfio_fwrite,
-        ^~~~~~~~~~~~
-../USER/main.c(97): warning: incompatible function pointer types initializing 'int (*)(FIL *, long, int)' with an expression of type 'int (*)(sfio_stream_t *, long, int)' [-Wincompatible-function-pointer-types]
-        &sfio_fseek,
-        ^~~~~~~~~~~
-3 warnings generated.
-compiling main.c...
-compiling lib_sd.c...
-compiling stm32f10x_gpio.c...
-compiling diskio.c...
-compiling misc.c...
-compiling stm32f10x_spi.c...
-compiling stm32f10x_rcc.c...
-compiling SPI_MSD0_Driver.c...
-assembling startup_stm32f10x_md.s...
-compiling stm32f10x_usart.c...
-compiling system_stm32f10x.c...
-compiling ff.c...
-linking...
-Program Size: Code=13414 RO-data=1774 RW-data=108 ZI-data=6092  
-".\Objects\fwup_delta.axf" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+".\Objects\fwup_delta.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -86,17 +60,17 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.5.0
 
    * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device\Source\ARM\startup_stm32f10x_md.s
       Source file:   Device\Source\system_stm32f10x.c
-      Source file:   Device\Source\ARM\STM32F1xx_OPT.s
       Include file:  RTE_Driver\Config\RTE_Device.h
+      Source file:   Device\Source\ARM\startup_stm32f10x_md.s
+      Source file:   Device\Source\ARM\STM32F1xx_OPT.s
 
    * Component: Keil::Device:StdPeriph Drivers:Framework:3.6.0
-      Include file:  Device\StdPeriph_Driver\inc\misc.h
+      Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
       Source file:   Device\StdPeriph_Driver\src\misc.c
       Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
       Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
-      Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
+      Include file:  Device\StdPeriph_Driver\inc\misc.h
 
    * Component: Keil::Device:StdPeriph Drivers:GPIO:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
