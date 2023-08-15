@@ -17,7 +17,7 @@
         <TargetCommonOption>
           <Device>STM32F103C8</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F1xx_DFP.2.4.0</PackID>
+          <PackID>Keil.STM32F1xx_DFP.2.3.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IROM(0x08000000,0x10000) IRAM(0x20000000,0x5000) CPUTYPE("Cortex-M3") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\MDK;..\USER\FATFS_V0.09\src;..\USER\SPI_SD_Card</IncludePath>
+              <IncludePath>..\MDK;..\USER\FATFS_V0.09\src;..\USER\SPI_SD_Card;..\USER\delta;..\USER;..\USER\frame_msg</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -382,7 +382,7 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>SPI</GroupName>
+          <GroupName>spi</GroupName>
           <Files>
             <File>
               <FileName>SPI_MSD0_Driver.c</FileName>
@@ -392,7 +392,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>SD_CARD</GroupName>
+          <GroupName>sd_card</GroupName>
           <Files>
             <File>
               <FileName>ccsbcs.c</FileName>
@@ -412,7 +412,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Project</GroupName>
+          <GroupName>project</GroupName>
           <Files>
             <File>
               <FileName>lib_sd.c</FileName>
@@ -430,11 +430,6 @@
               <FilePath>..\USER\usart.c</FilePath>
             </File>
             <File>
-              <FileName>delta.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\USER\delta.c</FilePath>
-            </File>
-            <File>
               <FileName>flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\USER\flash.c</FilePath>
@@ -448,6 +443,36 @@
               <FileName>save_file.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\USER\save_file.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>delta</GroupName>
+          <Files>
+            <File>
+              <FileName>delta.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\delta\delta.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>msg_frame</GroupName>
+          <Files>
+            <File>
+              <FileName>bts_frame_message.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\frame_msg\bts_frame_message.c</FilePath>
+            </File>
+            <File>
+              <FileName>bts_get_message.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\frame_msg\bts_get_message.c</FilePath>
+            </File>
+            <File>
+              <FileName>bts_convert.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\frame_msg\bts_convert.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -511,7 +536,7 @@
       <file attr="config" category="header" name="RTE_Driver\Config\RTE_Device.h" version="1.1.2">
         <instance index="0">RTE\Device\STM32F103C8\RTE_Device.h</instance>
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32F1xx CMSIS"/>
-        <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.4.0"/>
+        <package name="STM32F1xx_DFP" schemaVersion="1.4.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.3.0"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>
@@ -519,15 +544,15 @@
       <file attr="config" category="source" condition="STM32F1xx MD ARMCC" name="Device\Source\ARM\startup_stm32f10x_md.s" version="1.0.1">
         <instance index="0">RTE\Device\STM32F103C8\startup_stm32f10x_md.s</instance>
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32F1xx CMSIS"/>
-        <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.4.0"/>
+        <package name="STM32F1xx_DFP" schemaVersion="1.4.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.3.0"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>
       </file>
       <file attr="config" category="source" name="Device\StdPeriph_Driver\templates\stm32f10x_conf.h" version="3.6.0">
         <instance index="0">RTE\Device\STM32F103C8\stm32f10x_conf.h</instance>
-        <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="Framework" Cvendor="Keil" Cversion="3.6.0" condition="STM32F1xx STDPERIPH"/>
-        <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.4.0"/>
+        <component Cclass="Device" Cgroup="StdPeriph Drivers" Csub="Framework" Cvendor="Keil" Cversion="3.5.1" condition="STM32F1xx STDPERIPH"/>
+        <package name="STM32F1xx_DFP" schemaVersion="1.4.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.3.0"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>
@@ -535,7 +560,7 @@
       <file attr="config" category="source" name="Device\Source\system_stm32f10x.c" version="1.0.1">
         <instance index="0">RTE\Device\STM32F103C8\system_stm32f10x.c</instance>
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32F1xx CMSIS"/>
-        <package name="STM32F1xx_DFP" schemaVersion="1.7.2" url="http://www.keil.com/pack/" vendor="Keil" version="2.4.0"/>
+        <package name="STM32F1xx_DFP" schemaVersion="1.4.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.3.0"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>

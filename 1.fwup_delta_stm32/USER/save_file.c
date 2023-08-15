@@ -13,7 +13,6 @@ static etx_OtaState_e       ota_state = ETX_OTA_STATE_START;
 static etx_OtaFrameData_e   ota_frame = ETX_OTA_FRAME_START;
 
 uint8_t  arr_temp[1024] = {0};
-uint8_t  check_point = 0, check_point_uart = 0;
 uint32_t data_size;
 uint32_t size_file_bin, count_size_file = 0;
 
@@ -71,7 +70,6 @@ static void EXT_ProcessFrame(void)
             {
 							Delta_Mount();
               ota_state = ETX_OTA_STATE_HEADER;
-							check_point = 1;
             }
           }
           else
@@ -89,7 +87,6 @@ static void EXT_ProcessFrame(void)
 					
           if ( header->packet_type == ETX_OTA_PACKET_TYPE_HEADER )
           {
-						check_point = 2;
             ota_state = ETX_OTA_STATE_DATA;
             TempData.Data_In[0] = ota_data.Buffer[4];
             TempData.Data_In[1] = ota_data.Buffer[5];
@@ -112,7 +109,6 @@ static void EXT_ProcessFrame(void)
 					uint8_t *dd;
           if (ota_data.Buffer[1] == ETX_OTA_PACKET_TYPE_DATA)
           {
-						check_point = 3;
             datatemp.Data_In[0] = ota_data.Buffer[2];
             datatemp.Data_In[1] = ota_data.Buffer[3];
             data_size = datatemp.Data_Out;
@@ -134,7 +130,6 @@ static void EXT_ProcessFrame(void)
 
       case ETX_OTA_STATE_END:
         {
-					check_point = 4;
           ETX_OTA_COMMAND_t *cmd = (ETX_OTA_COMMAND_t*)ota_data.Buffer;
           if ( cmd->packet_type == ETX_OTA_PACKET_TYPE_CMD )
           {
@@ -175,7 +170,6 @@ void USART1_IRQHandler()
           ota_frame = ETX_OTA_FRAME_TYPE;
           ota_data.Buffer[ota_data.Index] = temp_char;
           ota_data.Index++;
-					check_point_uart = 1;
         }
         break;
 
@@ -183,7 +177,6 @@ void USART1_IRQHandler()
         ota_frame = ETX_OTA_FRAME_LENGTH;
         ota_data.Buffer[ota_data.Index] = temp_char;
         ota_data.Index++;
-				check_point_uart = 2;
         break;
 
       case ETX_OTA_FRAME_LENGTH:
@@ -194,7 +187,6 @@ void USART1_IRQHandler()
           temp_data.Data_In[0] = ota_data.Buffer[2];
           temp_data.Data_In[1] = ota_data.Buffer[3];
           ota_data.Length = temp_data.Data_Out;
-					check_point_uart = 3;
         }
         ota_data.Buffer[ota_data.Index] = temp_char;
         ota_data.Index++;
@@ -206,7 +198,6 @@ void USART1_IRQHandler()
         if ((ota_data.Index - 4) >= (ota_data.Length))
         {
           ota_frame = ETX_OTA_FRAME_CRC;
-					check_point_uart = 4;
         }
         break;
 
@@ -216,7 +207,6 @@ void USART1_IRQHandler()
         if ((ota_data.Index - 4 - (ota_data.Length)) >= (4))
         {
           ota_frame = ETX_OTA_FRAME_END;
-					check_point_uart = 5;
         }
         break;
 
@@ -232,7 +222,6 @@ void USART1_IRQHandler()
           ota_data.Index++;
           ota_data.Buffer[ota_data.Index] = 0x00;
           EXT_EndFrame();
-					check_point_uart = 6;
         }
         break;
     }

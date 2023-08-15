@@ -4,7 +4,12 @@
 #ifdef __cplusplus
 extern "C"{
 #endif
+	
+	extern char Flag2_Receive;
+	extern char Array2_Receive[];
+	extern char Count2_Data;
 
+	
 	void db_DEBUG_Init(unsigned int BaudRates);
 	void db_DEBUG_Putchar(char *_varString);
 	void db_DEBUG_SendChar(char _varChar);
@@ -12,6 +17,10 @@ extern "C"{
 	int db_DEBUG_compare(char *string);
 	int db_DEBUG_flag(void);
 	void db_DEBUG_Putchar_RRX(void);
+	
+	void INIT_UART_2(unsigned int BaudRates);
+	void UART2_SendChar(char data);
+	void UART2_SendString(char *data);
 #ifdef __cplusplus
 }
 #endif
