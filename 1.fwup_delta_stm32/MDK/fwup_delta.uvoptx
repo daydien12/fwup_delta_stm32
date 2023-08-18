@@ -153,27 +153,7 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>check_point_uart,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>1</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>\\fwup_delta\../USER/save_file.c\check_point,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>2</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>\\fwup_delta\../USER/save_file.c\count_size_file,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>3</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>\\fwup_delta\../USER/save_file.c\ota_data</ItemText>
-        </Ww>
-        <Ww>
-          <count>4</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>size_file_bin,0x0A</ItemText>
+          <ItemText>Array2_Receive</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

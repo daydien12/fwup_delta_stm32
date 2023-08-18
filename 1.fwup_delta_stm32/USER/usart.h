@@ -4,11 +4,10 @@
 #ifdef __cplusplus
 extern "C"{
 #endif
-	
-	extern char Flag2_Receive;
-	extern char Array2_Receive[];
-	extern char Count2_Data;
-
+	#include "stm32f10x.h" 
+	extern uint8_t Flag2_Receive;
+	extern uint8_t Array2_Receive[];
+	extern uint8_t Count2_Data;
 	
 	void db_DEBUG_Init(unsigned int BaudRates);
 	void db_DEBUG_Putchar(char *_varString);

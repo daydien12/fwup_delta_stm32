@@ -13,5 +13,7 @@
   C:\Users\nguye\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h \
   C:\Users\nguye\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h \
   C:\Users\nguye\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\misc.h \
-  C:\Keil_v5_36\ARM\ARMCLANG\Bin\..\include\string.h \
-  C:\Keil_v5_36\ARM\ARMCLANG\Bin\..\include\stdio.h ..\USER\usart.h
+  ..\USER\frame_msg\bts_get_message.h ..\USER\frame_msg\bts_convert.h \
+  C:\Keil_v5_36\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  ..\USER\frame_msg\bts_frame_message.h ..\USER\usart.h \
+  C:\Keil_v5_36\ARM\ARMCLANG\Bin\..\include\string.h ..\USER\usart.h

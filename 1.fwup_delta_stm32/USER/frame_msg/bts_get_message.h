@@ -8,19 +8,12 @@ extern "C"{
 #include <stdint.h>
 #include "stm32f10x.h" 
 #include "bts_convert.h"
+#include "bts_frame_message.h"
 #include "usart.h"
 
-#define FSM_STATE e 
-#define  Array_Out_Size 50
-
-#define TRUE 1
-#define FALSE 0
-#define COUNTER_UPDATE_DATA 		5000 	
-#define COUNTER_SMOKE_WARNING 		20 	
-#define COUNTER_TIMEOUT 	20 	
-
-#define DEFAULT_BYTE                            6 
-
+#define TRUE                       1
+#define FALSE                      0
+#define COUNTER_TIMEOUT 	         20 	
 
 typedef enum
 {
@@ -32,8 +25,8 @@ typedef enum
 typedef enum
 {
 	FSM_STATE_CHANGE_VALUE_START_FRAME	= 0,
-	FSM_STATE_CHANGE_VALUE_WAIT 		= 4,
-	FSM_STATE_CHANGE_VALUE_END 			= 6,
+	FSM_STATE_CHANGE_VALUE_WAIT 		    = 2,
+	FSM_STATE_CHANGE_VALUE_END 			    = 4,
 } fsmValueNextStep_e;
 
 extern int32_t timeout_wait;

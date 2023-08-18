@@ -59,7 +59,7 @@ static void EXT_ProcessFrame(void)
 	if (ota_data.FlagFrame == 1)
   {
     ota_data.FlagFrame = 0;
-    switch (ota_state )
+    switch (ota_state)
     {
       case ETX_OTA_STATE_START:
         {
