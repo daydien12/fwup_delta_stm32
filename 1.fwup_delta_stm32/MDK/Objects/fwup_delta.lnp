@@ -13,6 +13,7 @@
 ".\objects\bts_frame_message.o"
 ".\objects\bts_get_message.o"
 ".\objects\bts_convert.o"
+".\objects\handle_msg.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_gpio.o"
 ".\objects\stm32f10x_rcc.o"

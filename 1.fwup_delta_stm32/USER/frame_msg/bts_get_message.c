@@ -10,7 +10,7 @@ int32_t timeout_wait;
 fsmListState_e  fsm_state;
 
 static void ClearState(void);
-
+static void Time_Out_Get_Message(void);
 /**
    @brief : Flag of the new message
 
@@ -19,6 +19,7 @@ static void ClearState(void);
 */
 uint16_t Is_Message(uint16_t *lenght)
 {
+	Time_Out_Get_Message();
   if (flag_new_message == TRUE)
   {
     timeout_wait = FALSE;

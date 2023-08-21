@@ -6,6 +6,7 @@
 #include "save_file.h"
 #include "bts_frame_message.h"
 #include "bts_get_message.h"
+#include "handle_msg.h"
 
 #define FILE_OLD    "demo/blinky-k64f-old.bin"
 #define FILE_PATCH  "demo/blinky-k64f.patch"
@@ -42,16 +43,19 @@ int main(void)
   CreateMessageUpdateDeviceTest();
   while (1)
   {
+		
     if (Is_Message(&lenght) != 0)
     {
       if (lenght > 0)
       {
-				DebugMessage(Array2_Receive);			
+				messageFrameMsg_t dataout;
+				printf("\n-(Size    : %d)-\n", DetectMessage(Array2_Receive, &dataout));	
+				Handle_GetMsg(dataout);			
       }
     }
-    Time_Out_Get_Message();
+    
 		Fn_DELAY_ms(1);
-    //    ETX_Run();
+    //ETX_Run();
   }
 }
 
@@ -61,11 +65,20 @@ int main(void)
 */
 static void CreateMessageUpdateDeviceTest(void)
 {
-	uint8_t arr1[9]={8,9,1,2,3,4,5,6,7}, arr2[200];
+	uint8_t arr1[100]={8,9,1,2,3,4,5,6,7}, arr2[200], *arr3;
+	uploadMetaData_t *meta_data, meta_data_temp;
 	uint16_t sizedata = 0;
+	printf("sizeof: %d \n", sizeof(uploadData_t));
 	printf("\n---------------(Create Message Test)---------------\n");
+	
+	meta_data_temp.cmd = OTA_STATE_START;
+	meta_data_temp.package_crc = 0xAABBCCDD;
+	meta_data_temp.package_size = 20000;
+	meta_data = &meta_data_temp;
+	arr3 = (uint8_t*)meta_data;
 
-	for(int i=0; i<CreateMessage(1,9,arr1, arr2); i++)
+	memcpy(arr1, arr3, 9);
+	for(int i=0; i<CreateMessage(TYPE_MSG_UPDATE_FILE,9,arr1, arr2); i++)
 	{
 		if (arr2[i] <= 0x0f)
     {

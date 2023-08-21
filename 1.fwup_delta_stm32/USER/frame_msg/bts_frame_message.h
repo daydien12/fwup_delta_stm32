@@ -18,7 +18,7 @@
 #define DEFAULT_BYTE                            4
 
 #define DEFAULT_BYTE_CHECKSUM                   2																//  2byte checksum
-#define DEFAULT_MAX_SIZE_DATA                   130  	                          //  support max 10 device
+#define DEFAULT_MAX_SIZE_DATA                   140  	                          //  support max 10 device
 
 /**
  * @brief structure of frame message
@@ -35,13 +35,15 @@ typedef struct
 
 typedef enum
 {
-	TYPE_MESSAGE_UPDATE_SENSOR 	    = 0x0001,
-	TYPE_MESSAGE_UPDATE_DEVICE 	    = 0x0002,
-	TYPE_MESSAGE_CONTROL_DEVICE 	  = 0x0003,
+	TYPE_MSG_MODE_BOTLOADER 	  = 0x01,
+	TYPE_MSG_UPDATE_FILE 	      = 0x02,
+	TYPE_MSG_DELTA 	            = 0x03,
+	TYPE_MSG_UPDATE_FLASH       = 0x04,
+	TYPE_MSG_MODE_APP           = 0x05,
 }typeMessageSensor_e;
 
 int16_t DetectMessage(uint8_t *dataint, messageFrameMsg_t *dataout);
-int16_t CreateMessage(uint8_t type_msg, uint16_t Length, uint8_t *datain, uint8_t *dataout);
+int16_t CreateMessage(uint8_t type_msg, uint16_t length, uint8_t *datain, uint8_t *dataout);
 
 int16_t DebugMessage(uint8_t *dataint);
 #ifdef __cplusplus

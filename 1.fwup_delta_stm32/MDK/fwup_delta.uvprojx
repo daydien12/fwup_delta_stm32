@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\MDK;..\USER\FATFS_V0.09\src;..\USER\SPI_SD_Card;..\USER\delta;..\USER;..\USER\frame_msg</IncludePath>
+              <IncludePath>..\MDK;..\USER\FATFS_V0.09\src;..\USER\SPI_SD_Card;..\USER\delta;..\USER;..\USER\frame_msg;..\USER\handle_msg</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -473,6 +473,16 @@
               <FileName>bts_convert.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\USER\frame_msg\bts_convert.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>msg_handle</GroupName>
+          <Files>
+            <File>
+              <FileName>handle_msg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\handle_msg\handle_msg.c</FilePath>
             </File>
           </Files>
         </Group>
