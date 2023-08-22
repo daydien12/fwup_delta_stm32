@@ -43,7 +43,6 @@ int main(void)
   CreateMessageUpdateDeviceTest();
   while (1)
   {
-		
     if (Is_Message(&lenght) != 0)
     {
       if (lenght > 0)
@@ -53,7 +52,6 @@ int main(void)
 				Handle_GetMsg(dataout);			
       }
     }
-    
 		Fn_DELAY_ms(1);
     //ETX_Run();
   }
@@ -65,20 +63,37 @@ int main(void)
 */
 static void CreateMessageUpdateDeviceTest(void)
 {
-	uint8_t arr1[100]={8,9,1,2,3,4,5,6,7}, arr2[200], *arr3;
+	uint8_t arr2[200];
 	uploadMetaData_t *meta_data, meta_data_temp;
-	uint16_t sizedata = 0;
-	printf("sizeof: %d \n", sizeof(uploadData_t));
-	printf("\n---------------(Create Message Test)---------------\n");
+	uploadData_t *data, data_temp;
 	
-	meta_data_temp.cmd = OTA_STATE_START;
-	meta_data_temp.package_crc = 0xAABBCCDD;
-	meta_data_temp.package_size = 20000;
+	printf("\n---------------(Create Message Metadata Test)---------------\n");
+	meta_data_temp.cmd          = OTA_STATE_START;
+	meta_data_temp.package_crc  = 0xAABBCCDD;
+	meta_data_temp.package_size = 1024;
+	memcpy(meta_data_temp.name, "gpio.bin", strlen("gpio.bin"));
 	meta_data = &meta_data_temp;
-	arr3 = (uint8_t*)meta_data;
+	
+	for(int i=0; i<CreateMessage(TYPE_MSG_UPDATE_FILE,9+strlen("gpio.bin"),(uint8_t*)meta_data, arr2); i++)
+	{
+		if (arr2[i] <= 0x0f)
+    {
+      printf("0%x ", arr2[i]);
+    }
+    else
+    {
+      printf("%x ", arr2[i]);
+    }
+	}
+	
+	printf("\n---------------(Create Message data Test)---------------\n");
+	data_temp.cmd = OTA_STATE_DATA;
+	data_temp.length  = 128;
+	data_temp.offset  = 0;
+	data_temp.data[0] = 0xAA;
+	data = &data_temp;
 
-	memcpy(arr1, arr3, 9);
-	for(int i=0; i<CreateMessage(TYPE_MSG_UPDATE_FILE,9,arr1, arr2); i++)
+	for(int i=0; i<CreateMessage(TYPE_MSG_UPDATE_FILE,7, (uint8_t*)data, arr2); i++)
 	{
 		if (arr2[i] <= 0x0f)
     {
