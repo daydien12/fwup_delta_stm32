@@ -1,34 +1,37 @@
 #include "handle_msg.h"
 #include "string.h"
+#include "lib_sd.h"
+#include "delta.h"
 
-static uploadValueAll_t 	 upload_value;
-static responseValueAll_t  response_value;
+char path0[500];
 
+static uint32_t check_sum;
+static char update_name_files[50] = "";
+static uint32_t update_size_file_bin;
+static uint32_t update_count_size_file;
+
+responseValueAll_t  response_value;
 
 static void UpdateFile(const messageFrameMsg_t datain);
 
 void Handle_InitValueAll(void)
 {
-	
-	upload_value.size_file_bin   = 0;
-	upload_value.size_file_bin   = 0;
-	upload_value.count_size_file = 0;
-	memcpy(upload_value.Name, "", sizeof(upload_value.Name));
-	
-	response_value.flag = 0;
-	response_value.count_time_send = 0;
+  update_size_file_bin   = 0;
+  update_count_size_file = 0;
+
+  response_value.flag            = 0;
+  response_value.count_time_send = 0;
 }
 
 void Handle_GetMsg(const messageFrameMsg_t datain)
 {
-
   switch (datain.TypeMessage)
   {
     case TYPE_MSG_MODE_BOTLOADER:
-			
+
       break;
 
-    case TYPE_MSG_UPDATE_FILE:
+    case TYPE_MSG_UPDATE_FILE:	
       UpdateFile(datain);
       break;
 
@@ -53,80 +56,65 @@ void Handle_ResponseMsg(void)
 
 static void UpdateFile(const messageFrameMsg_t datain)
 {
-  uploadData_t     *data_temp;
-  uploadMetaData_t *meta_data_temp;
-
+  uploadData_t       *data_temp;
+  uploadMetaData_t   *meta_data_temp;
+  uploadDeleteFile_t *delete_file;
   switch (datain.Data[0])
   {
     case OTA_STATE_START:
       meta_data_temp = (uploadMetaData_t*)datain.Data;
-      if (meta_data_temp->cmd == OTA_STATE_START)
-      {
-        upload_value.size_file_bin   = 0;
-        upload_value.size_file_bin   = 0;
-        upload_value.count_size_file = 0;
-        memcpy(upload_value.Name, "", sizeof(upload_value.Name));
+			update_size_file_bin   = 0;
+			update_size_file_bin   = 0;
+			update_count_size_file = 0;
 
-        upload_value.check_sum       = meta_data_temp->package_crc;
-        upload_value.size_file_bin   = meta_data_temp->package_size;
-        memcpy(upload_value.Name, meta_data_temp->name, strlen(meta_data_temp->name));
-				
-        printf("string len    : %d\n", strlen(meta_data_temp->name));
-        printf("Name          : %s\n", upload_value.Name);
-        printf("check_sum     : %x\n", upload_value.check_sum );
-        printf("size_file_bin : %d\n", upload_value.size_file_bin);
-      }
-      else
-      {
-        upload_value.size_file_bin   = 0;
-        upload_value.size_file_bin   = 0;
-        upload_value.count_size_file = 0;
-        memcpy(upload_value.Name, "", sizeof(upload_value.Name));
-      }
+			check_sum = meta_data_temp->package_crc;
+			update_size_file_bin   = meta_data_temp->package_size;
+			memcpy(update_name_files, meta_data_temp->name, strlen(meta_data_temp->name));
+
+			printf("string len    : %d\n", strlen(meta_data_temp->name));
+			printf("name          : %s\n", update_name_files);
+			printf("check_sum     : %x\n", check_sum );
+			printf("size          : %d\n", update_size_file_bin);
+
       break;
 
     case OTA_STATE_DATA:
-      data_temp = (uploadData_t*)datain.Data;
-      if (data_temp->cmd == OTA_STATE_DATA)
-      {
-        printf("cmd     : %x\n", data_temp->cmd);
-        printf("length  : %d\n", data_temp->length);
-        printf("offset  : %d\n", data_temp->offset);
-        printf("data    : %x\n", data_temp->data[0]);
+			data_temp = (uploadData_t*)datain.Data;
+			printf("cmd     : %x\n", data_temp->cmd);
+			printf("length  : %d\n", data_temp->length);
+			printf("offset  : %d\n", data_temp->offset);
 
-        upload_value.count_size_file += data_temp->length;
-        if (upload_value.count_size_file >= upload_value.size_file_bin)
-        {
-          printf("Done file!");
-        }
-        else
-        {
-          printf("Done!");
-        }
-      }
+			
+			SD_WriteFile((char*)update_name_files, data_temp->data, data_temp->length, data_temp->offset);
+			printf("Kich thuoc file %s la %ld bytes\n", update_name_files, SD_getFileSize(update_name_files));
+		
+			if(update_count_size_file == data_temp->offset)
+			{
+				update_count_size_file += data_temp->length;
+			}
+			if (update_count_size_file >= update_size_file_bin)
+			{
+				printf("Done file: %d!\n", update_count_size_file);
+			}
+			else
+			{
+				printf("Done: %d!\n", update_count_size_file);
+			}
       break;
 
     case OTA_STATE_END:
-      upload_value.check_sum       = 0;
-      upload_value.size_file_bin   = 0;
-      upload_value.count_size_file = 0;
-      memcpy(upload_value.Name, "", sizeof(upload_value.Name));
+      check_sum              = 0;
+      update_size_file_bin   = 0;
+      update_count_size_file = 0;
       break;
 
     case OTA_STATE_DELETE:
-
+      delete_file = (uploadDeleteFile_t*)datain.Data;
+      if (delete_file->cmd == OTA_STATE_DELETE)
+      {
+        f_unlink(delete_file->name);
+        SD_ScanFiles(path0);
+      }
       break;
   }
-
-  /*
-    printf("Start     : %x\n", datain.Start);
-    printf("TypeMSG   : %x\n", datain.TypeMessage);
-    printf("Length    : %d\n", datain.Length);
-    printf("Value     : ");
-    for (int i = 0; i < datain.Length - DEFAULT_BYTE_CHECKSUM; i++)
-    {
-    printf("%d ", datain.Data[i]);
-    }
-    printf("\nCheck sum : %x\n", datain.Crc);
-  */
 }

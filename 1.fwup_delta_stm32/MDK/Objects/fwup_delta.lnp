@@ -8,7 +8,6 @@
 ".\objects\usart.o"
 ".\objects\flash.o"
 ".\objects\delay.o"
-".\objects\save_file.o"
 ".\objects\delta_1.o"
 ".\objects\bts_frame_message.o"
 ".\objects\bts_get_message.o"

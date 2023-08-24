@@ -18,7 +18,7 @@
 #define DEFAULT_BYTE                            4
 
 #define DEFAULT_BYTE_CHECKSUM                   2																//  2byte checksum
-#define DEFAULT_MAX_SIZE_DATA                   140  	                          //  support max 10 device
+#define DEFAULT_MAX_SIZE_DATA                   140  	                         
 
 /**
  * @brief structure of frame message

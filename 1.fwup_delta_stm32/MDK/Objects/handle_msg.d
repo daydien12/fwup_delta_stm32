@@ -16,4 +16,10 @@
   C:\Users\nguye\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc\misc.h \
   ..\USER\frame_msg\bts_frame_message.h ..\USER\frame_msg\bts_convert.h \
   C:\Keil_v5_36\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  C:\Keil_v5_36\ARM\ARMCLANG\Bin\..\include\string.h
+  C:\Keil_v5_36\ARM\ARMCLANG\Bin\..\include\string.h ..\USER\lib_sd.h \
+  ..\USER\usart.h ..\USER\FATFS_V0.09\src\ff.h \
+  ..\USER\FATFS_V0.09\src\integer.h ..\USER\FATFS_V0.09\src\ffconf.h \
+  ..\USER\SPI_SD_Card\SPI_MSD1_Driver.h \
+  ..\USER\SPI_SD_Card\SPI_MSD0_Driver.h \
+  ..\USER\SPI_SD_Card\SPI_MSD1_Driver.h ..\USER\delta\delta.h \
+  ..\USER\usart.h

@@ -7,7 +7,7 @@
 #include "stdio.h"
 #include "usart.h"
 
-#define IRQ_UART 0
+#define IRQ_UART 1
 #define UART2    1
 
 struct ___FILE {
@@ -23,7 +23,7 @@ int fputc(int ch, FILE *f) {
     /* Send your custom byte */
     /* Send byte to USART */
     UART2_SendChar(ch);
-    
+    //db_DEBUG_SendChar(ch);
     /* If everything is OK, you have to return character written */
     return ch;
     /* If character is not correct, you can return EOF (-1) to stop writing */
@@ -34,7 +34,7 @@ int fputc(int ch, FILE *f) {
 #define TX GPIO_Pin_9
 #define RX GPIO_Pin_10
 //==============================kich thuc mang===============================
-#define string_size 80
+#define string_size 500
 //==============================khai bao mang==============================
 
 char RRX[string_size];
@@ -160,30 +160,20 @@ void USART2_IRQHandler(void) {
     temp_data = USART2->DR;
 		BTS_Get_Message(temp_data, Array2_Receive);
   }
-  //USART_ClearITPendingBit(USART2, USART_IT_RXNE);
+  USART_ClearITPendingBit(USART2, USART_IT_RXNE);
 }
 #endif
 
 #if IRQ_UART
 //==============================Ham ngat UART==============================
-	void USART1_IRQHandler()
+void USART1_IRQHandler()
+{
+	char temp_data;
+	if(USART_GetITStatus(USART1,USART_IT_RXNE) != RESET)
 	{
-		if(USART_GetITStatus(USART1,USART_IT_RXNE) != RESET)
-		{
-			temp_char = USART_ReceiveData(USART1);
-		
-			if(temp_char != '\n')
-			{	
-				RRX[RXI] = temp_char;
-				RXI++;
-			}
-			else
-			{
-				RRX[RXI] = 0x00;
-				RX_FLAG_END_LINE=1;
-				RXI = 0;
-			}
-		}
-		USART_ClearITPendingBit(USART1, USART_IT_RXNE);
+		temp_data = USART_ReceiveData(USART1);
+		BTS_Get_Message(temp_data, Array2_Receive);
 	}
+	USART_ClearITPendingBit(USART1, USART_IT_RXNE);
+}
 #endif

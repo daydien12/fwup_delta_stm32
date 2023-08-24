@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 FRESULT res;
-
+FATFS fs;
 
 /*******************************************************************************
     @Tên ch?c nang    : scan_files
@@ -116,10 +116,6 @@ DWORD SD_getFileSize(const char* filename)
 
     // Now you have the fileSize in bytes, you can do whatever you want with it
   }
-  else
-  {
-    // Handle file open error
-  }
   return fileSize;
 }
 
@@ -132,4 +128,13 @@ uint32_t SD_WriteFile(const char *file_name, const void *ptr, size_t size, size_
   f_write(&fdsts, ptr, size, &brs);
   f_close(&fdsts);
   return brs;
+}
+
+void SD_Mount(void)
+{
+	res = f_mount(0, &fs);
+  if (res != FR_OK) 
+	{
+    printf("mount filesystem 0 failed : %d\n\r", res);
+  }
 }

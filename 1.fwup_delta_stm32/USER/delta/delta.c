@@ -1,7 +1,7 @@
 #include "delta.h"
 #include "janpatch.h"
 
-FATFS fs;
+//FATFS fs;
 
 static unsigned char source_buf[SIZE_BUFFER];
 static unsigned char target_buf[SIZE_BUFFER];
@@ -24,14 +24,14 @@ janpatch_ctx ctx =
   &sfio_tell,
 };
 
-void Delta_Mount(void)
-{
-	res = f_mount(0, &fs);
-  if (res != FR_OK) 
-	{
-    printf("mount filesystem 0 failed : %d\n\r", res);
-  }
-}
+//void Delta_Mount(void)
+//{
+//	res = f_mount(0, &fs);
+//  if (res != FR_OK) 
+//	{
+//    printf("mount filesystem 0 failed : %d\n\r", res);
+//  }
+//}
 
 void Delta_Run(char *name_old_file, char *name_patch_file, char *name_new_file)
 {

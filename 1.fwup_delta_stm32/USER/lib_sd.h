@@ -17,5 +17,5 @@ uint32_t SD_TotalSize(char *path);
 DWORD SD_getFileSize(const char* filename);
 
 uint32_t SD_WriteFile(const char *file_name, const void *ptr, size_t size, size_t offset);
-
+void SD_Mount(void);
 #endif/* __LID_SD_H */
