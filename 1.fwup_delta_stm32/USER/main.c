@@ -34,7 +34,7 @@ int main(void)
 	SD_Mount();
 	f_unlink("bien.bin");
 	printf("hello\n");
-  //CreateMessageUpdateDeviceTest();
+  CreateMessageUpdateDeviceTest();
   while (1)
   {
     if (Is_Message(&lenght) != 0)

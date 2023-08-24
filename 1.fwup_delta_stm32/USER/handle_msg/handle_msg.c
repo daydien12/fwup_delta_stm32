@@ -6,7 +6,7 @@
 char path0[500];
 
 static uint32_t check_sum;
-static char update_name_files[50] = "";
+ char update_name_files[50] = "";
 static uint32_t update_size_file_bin;
 static uint32_t update_count_size_file;
 
@@ -66,6 +66,10 @@ static void UpdateFile(const messageFrameMsg_t datain)
 			update_size_file_bin   = 0;
 			update_size_file_bin   = 0;
 			update_count_size_file = 0;
+			for(int i=0; i<sizeof(update_name_files); i++)
+			{
+				update_name_files[i] = 0;
+			}
 
 			check_sum = meta_data_temp->package_crc;
 			update_size_file_bin   = meta_data_temp->package_size;
