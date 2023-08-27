@@ -43,7 +43,7 @@ int main(void)
       {
 				messageFrameMsg_t dataout;
 				printf("\n-(Size    : %d)-\n", DetectMessage(Array2_Receive, &dataout));
-				Handle_GetMsg(dataout);			
+				Handle_GetMsg(dataout, db_DEBUG_SendChar);			
       }
     }
 		Fn_DELAY_ms(1);
@@ -81,48 +81,48 @@ static void CreateMessageUpdateDeviceTest(void)
     }
 	}
 	
-	printf("\n---------------(Create Message data Test)---------------\n");
-	data_temp.cmd = OTA_STATE_DATA;
-	data_temp.length  = 128;
-	data_temp.offset  = 0;
-	for(int i=0; i<128; i++)
-	{
-		data_temp.data[i] = i+1;
-	}
-	data = &data_temp;
+//	printf("\n---------------(Create Message data Test)---------------\n");
+//	data_temp.cmd = OTA_STATE_DATA;
+//	data_temp.length  = 128;
+//	data_temp.offset  = 0;
+//	for(int i=0; i<128; i++)
+//	{
+//		data_temp.data[i] = i+1;
+//	}
+//	data = &data_temp;
 
-	for(int i=0; i<CreateMessage(TYPE_MSG_UPDATE_FILE,sizeof(uploadData_t), (uint8_t*)data, arr2); i++)
-	{
-		if (arr2[i] <= 0x0f)
-    {
-      printf("0%x ", arr2[i]);
-    }
-    else
-    {
-      printf("%x ", arr2[i]);
-    }
-	}
-	
-	printf("\n---------------(Delete Message data Test)---------------\n");
-	delete_temp.cmd = OTA_STATE_DELETE;
-	memcpy(delete_temp.name, "gpio.bin", sizeof("gpio.bin"));
-	deletes = &delete_temp;
+//	for(int i=0; i<CreateMessage(TYPE_MSG_UPDATE_FILE,sizeof(uploadData_t), (uint8_t*)data, arr2); i++)
+//	{
+//		if (arr2[i] <= 0x0f)
+//    {
+//      printf("0%x ", arr2[i]);
+//    }
+//    else
+//    {
+//      printf("%x ", arr2[i]);
+//    }
+//	}
+//	
+//	printf("\n---------------(Delete Message data Test)---------------\n");
+//	delete_temp.cmd = OTA_STATE_DELETE;
+//	memcpy(delete_temp.name, "gpio.bin", sizeof("gpio.bin"));
+//	deletes = &delete_temp;
 
-	for(int i=0; i<CreateMessage(TYPE_MSG_UPDATE_FILE,1+sizeof("gpio.bin"), (uint8_t*)deletes, arr2); i++)
-	{
-		if (arr2[i] <= 0x0f)
-    {
-      printf("0%x ", arr2[i]);
-    }
-    else
-    {
-      printf("%x ", arr2[i]);
-    }
-	}
-	
-	printf("\n---------------(Detect Message Test)---------------");
-	//DebugMessage(arr2);
-	printf("---------------(Done)---------------\n");
+//	for(int i=0; i<CreateMessage(TYPE_MSG_UPDATE_FILE,1+sizeof("gpio.bin"), (uint8_t*)deletes, arr2); i++)
+//	{
+//		if (arr2[i] <= 0x0f)
+//    {
+//      printf("0%x ", arr2[i]);
+//    }
+//    else
+//    {
+//      printf("%x ", arr2[i]);
+//    }
+//	}
+//	
+//	printf("\n---------------(Detect Message Test)---------------");
+//	//DebugMessage(arr2);
+//	printf("---------------(Done)---------------\n");
 }
 
   //  GPIO_InitTypeDef gpio_struct;

@@ -9,6 +9,8 @@ extern "C" {
 #include "stm32f10x.h"
 #include "bts_frame_message.h"
 
+#define POLYNOMIAL 0x04C11DB7
+
 /*
    OTA process state
 */
@@ -50,7 +52,7 @@ typedef struct
   uint16_t count_time_send;
 } responseValueAll_t;
 
-void Handle_GetMsg(const messageFrameMsg_t datain);
+void Handle_GetMsg(const messageFrameMsg_t datain, void(*Uart_SendByte)(char));
 void Handle_ResponseMsg(void);
 void Handle_InitValueAll(void);
 
