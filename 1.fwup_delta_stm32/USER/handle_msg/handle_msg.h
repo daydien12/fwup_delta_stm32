@@ -6,6 +6,7 @@ extern "C" {
 #endif
 
 #include <stdint.h>
+#include "delay.h"
 #include "stm32f10x.h"
 #include "bts_frame_message.h"
 
@@ -38,11 +39,19 @@ typedef struct
   uint8_t  data[128];
 } __attribute__((packed)) uploadData_t;
 
+
 typedef struct
 {
   uint8_t cmd;
   char name[50];
 } __attribute__((packed)) uploadDeleteFile_t;
+
+typedef struct
+{
+  char name_old[30];
+	char name_patch[30];
+	char name_create[30];
+} __attribute__((packed)) deltaDiff_t;
 
 
 typedef struct

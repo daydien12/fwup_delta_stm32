@@ -4,6 +4,9 @@
 #include "delta.h"
 
 char path0[500];
+#define FILE_OLD    "demo/blinky-k64f-old.bin"
+#define FILE_PATCH  "demo/blinky-k64f.patch"
+#define FILE_CREATE "demo/blinky5.bin"
 
 static uint32_t check_sum;
 char update_name_files[50] = "";
@@ -14,8 +17,10 @@ responseValueAll_t  response_value;
 
 static void UpdateFile(const messageFrameMsg_t datain, void(*Uart_SendByte)(char));
 static void UpdateResponseMsg(uint8_t cmd,  void(*Uart_SendByte)(char));
-
+static void DeltaResponseMsg(uint8_t  cmd,  void(*Uart_SendByte)(char));
 static uint32_t crc32(unsigned long crc, const unsigned char *data, size_t length);
+
+static void Handle_Delay(uint8_t times);
 
 void Handle_InitValueAll(void)
 {
@@ -28,6 +33,7 @@ void Handle_InitValueAll(void)
 
 void Handle_GetMsg(const messageFrameMsg_t datain, void(*Uart_SendByte)(char))
 {
+	deltaDiff_t *delta_data;
   switch (datain.TypeMessage)
   {
     case TYPE_MSG_MODE_BOTLOADER:
@@ -39,9 +45,16 @@ void Handle_GetMsg(const messageFrameMsg_t datain, void(*Uart_SendByte)(char))
       break;
 
     case TYPE_MSG_DELTA:
+			delta_data = (deltaDiff_t*)datain.Data;
+			f_unlink(delta_data->name_create);
+			Delta_Run(delta_data->name_old, delta_data->name_patch, delta_data->name_create);
+			printf("Kich thuoc file %s la %ld bytes\n", delta_data->name_create, SD_getFileSize(delta_data->name_create));
+			Handle_Delay(5);
+			DeltaResponseMsg(1, Uart_SendByte);
       break;
 
     case TYPE_MSG_UPDATE_FLASH:
+			
       break;
 
     case TYPE_MSG_MODE_APP:
@@ -70,7 +83,7 @@ static void UpdateFile(const messageFrameMsg_t datain, void(*Uart_SendByte)(char
 			update_size_file_bin   = 0;
 			update_count_size_file = 0;
 			update_check_sum = 0xFFFFFFFFUL;
-		
+			
 			for(int i=0; i<sizeof(update_name_files); i++)
 			{
 				update_name_files[i] = 0;
@@ -84,6 +97,7 @@ static void UpdateFile(const messageFrameMsg_t datain, void(*Uart_SendByte)(char
 			printf("name          : %s\n", update_name_files);
 			printf("check_sum     : %x\n", check_sum );
 			printf("size          : %d\n", update_size_file_bin);
+			f_unlink(update_name_files);
 			UpdateResponseMsg(OTA_STATE_START, Uart_SendByte); 
       break;
 
@@ -114,7 +128,9 @@ static void UpdateFile(const messageFrameMsg_t datain, void(*Uart_SendByte)(char
 			{
 				printf("Done: %d!\n", update_count_size_file);
 			}
+			Handle_Delay(2);
 			UpdateResponseMsg(OTA_STATE_DATA, Uart_SendByte); 
+			
       break;
 
     case OTA_STATE_END:
@@ -145,6 +161,17 @@ static void UpdateResponseMsg(uint8_t cmd,  void(*Uart_SendByte)(char))
 	}
 }
 
+static void DeltaResponseMsg(uint8_t  cmd,  void(*Uart_SendByte)(char))
+{
+	uint8_t arr[2], length_arr;
+	arr[0]= cmd;
+	length_arr = CreateMessage(TYPE_MSG_DELTA, 1, arr, arr);
+	for(int i=0; i<length_arr; i++)
+	{
+		Uart_SendByte(arr[i]);
+	}
+}
+
 uint32_t crc32(unsigned long crc, const unsigned char *data, size_t length)
 {
     for (size_t i = 0; i < length; i++) 
@@ -156,4 +183,12 @@ uint32_t crc32(unsigned long crc, const unsigned char *data, size_t length)
         }
     }
     return crc;
+}
+
+static void Handle_Delay(uint8_t times)
+{
+	for(int i=0; i<times; i++)
+	{
+		Fn_DELAY_ms(1000);
+	}
 }

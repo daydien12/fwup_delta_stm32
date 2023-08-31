@@ -2,7 +2,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x.h"                  // Device header
 #include "delta.h"
-#include "delay.h"
 #include "bts_frame_message.h"
 #include "bts_get_message.h"
 #include "handle_msg.h"
@@ -10,19 +9,14 @@
 #include "lib_sd.h"
 #include "delta.h"
 
-#define FILE_OLD    "demo/blinky-k64f-old.bin"
-#define FILE_PATCH  "demo/blinky-k64f.patch"
-#define FILE_CREATE "demo/blinky5.bin"
+
 #define FILE_FILE   "bien123456789.txt"
 
 #define AS32_SETUP_M0_PIN GPIO_Pin_8
 #define AS32_SETUP_M1_PIN GPIO_Pin_9
 
 static void CreateMessageUpdateDeviceTest(void);
-
 uint16_t lenght = 0;
-uint8_t size_array_data = 0;
-messageFrameMsg_t frame_message;
 
 int main(void)
 {
@@ -35,6 +29,7 @@ int main(void)
 	f_unlink("bien.bin");
 	printf("hello\n");
   CreateMessageUpdateDeviceTest();
+	
   while (1)
   {
     if (Is_Message(&lenght) != 0)
