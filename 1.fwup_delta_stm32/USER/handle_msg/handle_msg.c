@@ -11,7 +11,7 @@ char path0[500];
 static uint32_t check_sum;
 char update_name_files[50] = "";
 static uint32_t update_size_file_bin;
-static uint32_t update_count_size_file;
+static uint32_t update_count_size_file = 0;
 static uint32_t update_check_sum = 0xFFFFFFFFUL;
 responseValueAll_t  response_value;
 
@@ -49,7 +49,7 @@ void Handle_GetMsg(const messageFrameMsg_t datain, void(*Uart_SendByte)(char))
 			f_unlink(delta_data->name_create);
 			Delta_Run(delta_data->name_old, delta_data->name_patch, delta_data->name_create);
 			printf("Kich thuoc file %s la %ld bytes\n", delta_data->name_create, SD_getFileSize(delta_data->name_create));
-			Handle_Delay(5);
+			//Handle_Delay(5);
 			DeltaResponseMsg(1, Uart_SendByte);
       break;
 
@@ -110,11 +110,14 @@ static void UpdateFile(const messageFrameMsg_t datain, void(*Uart_SendByte)(char
 			update_check_sum = crc32(update_check_sum, data_temp->data, data_temp->length);
 			SD_WriteFile((char*)update_name_files, data_temp->data, data_temp->length, data_temp->offset);
 			printf("Kich thuoc file %s la %ld bytes\n", update_name_files, SD_getFileSize(update_name_files));
-		
+			
+
 			if(update_count_size_file == data_temp->offset)
 			{
+				printf("compe: %d - %d!\n", update_count_size_file, data_temp->offset);
 				update_count_size_file += data_temp->length;
 			}
+			
 			if (update_count_size_file >= update_size_file_bin)
 			{
 				update_check_sum ^= 0xFFFFFFFFUL;
@@ -128,7 +131,7 @@ static void UpdateFile(const messageFrameMsg_t datain, void(*Uart_SendByte)(char
 			{
 				printf("Done: %d!\n", update_count_size_file);
 			}
-			Handle_Delay(2);
+			//Handle_Delay(2);
 			UpdateResponseMsg(OTA_STATE_DATA, Uart_SendByte); 
 			
       break;

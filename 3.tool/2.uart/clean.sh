@@ -1,0 +1,1 @@
+rm -r CMakeFiles/ Testing/ CMakeCache.txt CPackConfig.cmake CPackSourceConfig.cmake CTestTestfile.cmake DartConfiguration.tcl Makefile Uart cmake_install.cmake
