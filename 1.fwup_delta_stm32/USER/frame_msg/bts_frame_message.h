@@ -40,7 +40,7 @@ typedef enum
 	TYPE_MSG_DELTA 	            = 0x03,
 	TYPE_MSG_UPDATE_FLASH       = 0x04,
 	TYPE_MSG_MODE_APP           = 0x05,
-}typeMessageSensor_e;
+}typeMessage_e;
 
 int16_t DetectMessage(uint8_t *dataint, messageFrameMsg_t *dataout);
 int16_t CreateMessage(uint8_t type_msg, uint16_t length, uint8_t *datain, uint8_t *dataout);

@@ -168,9 +168,10 @@ void USART2_IRQHandler(void) {
 //==============================Ham ngat UART==============================
 void USART1_IRQHandler()
 {
-	char temp_data;
+	uint8_t temp_data;
 	if(USART_GetITStatus(USART1,USART_IT_RXNE) != RESET)
 	{
+		
 		temp_data = USART_ReceiveData(USART1);
 		BTS_Get_Message(temp_data, Array2_Receive);
 	}

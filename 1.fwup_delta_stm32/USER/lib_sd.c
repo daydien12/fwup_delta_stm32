@@ -129,6 +129,16 @@ uint32_t SD_WriteFile(const char *file_name, const void *ptr, size_t size, size_
   f_close(&fdsts);
   return brs;
 }
+uint32_t SD_ReadFile(const char *file_name, void *ptr, size_t size, size_t offset)
+{
+	FIL fdsts;
+  UINT brs;
+  f_open(&fdsts, file_name, FA_OPEN_EXISTING | FA_READ);
+  f_lseek(&fdsts, offset);
+  f_read(&fdsts, ptr, size, &brs);
+  f_close(&fdsts);
+  return brs;
+}
 
 void SD_Mount(void)
 {

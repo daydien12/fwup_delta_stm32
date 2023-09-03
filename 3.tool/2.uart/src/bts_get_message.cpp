@@ -68,8 +68,8 @@ void GetMessage::TimeOut(void)
   if (timeout_wait == true)
   {
     timeout_end = clock();
-    //if ((timeout_end - timeout_start) >= 40000)
-    if ((timeout_end - timeout_start) >= 100000)
+    if ((timeout_end - timeout_start) >= 40000)
+    //if ((timeout_end - timeout_start) >= 100000)
     {
       length_message = 0;
       flag_new_message = false;

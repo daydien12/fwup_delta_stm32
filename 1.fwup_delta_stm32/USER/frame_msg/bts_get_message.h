@@ -13,7 +13,7 @@ extern "C"{
 
 #define TRUE                       1
 #define FALSE                      0
-#define COUNTER_TIMEOUT 	         20 	
+#define COUNTER_TIMEOUT 	         100 	
 
 typedef enum
 {

@@ -52,9 +52,9 @@ void Delta_Run(char *name_old_file, char *name_patch_file, char *name_new_file)
   targets.size      = (sources.size + patchs.size);
 
   janpatch(ctx, (FIL*)&sources,  (FIL*)&patchs,  (FIL*)&targets);
-//	printf("Kich thuoc file %s la %ld bytes\n", (char*)name_old_file, SD_getFileSize(name_old_file));
-//  printf("Kich thuoc file %s la %ld bytes\n", (char*)name_patch_file , SD_getFileSize(name_patch_file));
-//	printf("Kich thuoc file %s la %ld bytes\n", (char*)name_new_file, SD_getFileSize(name_new_file));
+	printf("Kich thuoc file %s la %ld bytes\n", (char*)name_old_file, SD_getFileSize(name_old_file));
+  printf("Kich thuoc file %s la %ld bytes\n", (char*)name_patch_file , SD_getFileSize(name_patch_file));
+	printf("Kich thuoc file %s la %ld bytes\n", (char*)name_new_file, SD_getFileSize(name_new_file));
 }
 
 size_t sfio_fread(void* ptr, size_t size, size_t count, sfio_stream_t* stream)

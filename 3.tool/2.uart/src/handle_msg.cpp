@@ -2,8 +2,9 @@
 
 uint32_t UpdateFile_CreateFrameMetaData(const char *name_file_bin, const char *name_file, uint8_t *dataout, uint32_t &size_file);
 uint32_t UpdateFile_CreateFrameData(const char *name_file_bin, const uint32_t length, const uint32_t offset, uint8_t *dataout);
+uint32_t UpdateFile_CreateFrameEnd(uint8_t *dataout);
 
-uint32_t HandleMsg::Handle_UpdateFile(const char *name_file_bin, const char *port, const uint8_t mode, const char *name_file, uint8_t &state,  uint32_t &offset, uint32_t &size_file_bin)
+uint32_t HandleMsg::Handle_UpdateFileRun(const char *name_file_bin, const char *port, const char *name_file, uint8_t &state,  uint32_t &offset, uint32_t &size_file_bin)
 {
   uint8_t arr[150], size_arr = 0;
   uint32_t length_send = 0;
@@ -28,21 +29,77 @@ uint32_t HandleMsg::Handle_UpdateFile(const char *name_file_bin, const char *por
       }
       printf("Send: %d-%d\n", size_arr, offset);
       uart.writebyte(arr, size_arr);
-      if(mode == 1)
-      {
-        offset += size_arr - 12;
-      }
      break;
 
     case OTA_STATE_END:
-      
+      size_arr = UpdateFile_CreateFrameEnd(arr);
+      printf("Send: %d\n", size_arr);
+      uart.writebyte(arr, size_arr);
      break;
-  
+
+    case OTA_STATE_NULL:
+       printf("Null\n");	
+     break;
 
     default:
       break;
   }
   uart.~SerialPort();
+  return 1;
+}
+
+uint32_t HandleMsg::Handle_UpdateFileState(const uint8_t* datain, uint8_t &state,  uint32_t &offset, uint32_t &size_file_bin)
+{
+  uploadResponse_t *data_temp = (uploadResponse_t*)datain;
+  printf("Get1: cmd: %d - offset: %d - size_file_bin: %d\n", data_temp->cmd,  data_temp->offset, size_file_bin);
+  switch (state)
+  {
+    case OTA_STATE_START:
+      if((data_temp->cmd == OTA_STATE_START)&&(data_temp->offset == size_file_bin))
+      {
+        state = OTA_STATE_DATA;
+      }
+      break;
+
+    case OTA_STATE_DATA:
+      if((data_temp->cmd == OTA_STATE_DATA) && (data_temp->offset == offset))
+      {
+        if ((size_file_bin - offset) > LENGTH_SEND)
+        {
+          offset += LENGTH_SEND;
+        }
+        else if ((size_file_bin - offset) < LENGTH_SEND)
+        {
+          if(data_temp->offset != size_file_bin)
+          {
+            offset +=  (size_file_bin - offset);
+          }
+          else
+          {
+            state = OTA_STATE_END;
+          }
+        }
+      }
+     break;
+
+    case OTA_STATE_END:
+      if((data_temp->cmd == OTA_STATE_END)&&(data_temp->offset == 1))
+      {
+        state = OTA_STATE_NULL;
+      }
+      else
+      {
+        state = OTA_STATE_START;
+      }
+     break;
+
+    case OTA_STATE_NULL:
+       printf("Null\n");	
+     break;
+
+    default:
+      break;
+  }
   return 1;
 }
 
@@ -60,7 +117,7 @@ uint32_t HandleMsg::Handle_DeltaUpdate(const char *port, const char *name_old, c
   memcpy(delta_data_temp.name_patch, name_patch, lenth_patch);
   memcpy(delta_data_temp.name_create, name_create, lenth_create);
 
-  delta_data_temp.name_old[lenth_old+1] = 0;
+  delta_data_temp.name_old[lenth_old] = 0;
   delta_data_temp.name_patch[lenth_patch] = 0;
   delta_data_temp.name_create[lenth_create] = 0;
 
@@ -103,4 +160,13 @@ uint32_t UpdateFile_CreateFrameData(const char *name_file_bin, const uint32_t le
   lengths = framemessage.CreateMessage(TYPE_MSG_UPDATE_FILE, sizeof(uploadData_t) - (128 - length), (uint8_t*)data, dataout);
   file.Files_Clear();
   return lengths;
+}
+
+uint32_t UpdateFile_CreateFrameEnd(uint8_t *dataout)
+{
+  uint8_t sizearr = 0;
+  uint8_t arr[2] = {OTA_STATE_END,0};
+  FrameMessage framemessage;
+  sizearr = framemessage.CreateMessage(TYPE_MSG_UPDATE_FILE, 1, arr, dataout);
+  return sizearr;
 }

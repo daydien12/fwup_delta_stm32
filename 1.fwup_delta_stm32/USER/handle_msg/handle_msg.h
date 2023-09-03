@@ -39,6 +39,11 @@ typedef struct
   uint8_t  data[128];
 } __attribute__((packed)) uploadData_t;
 
+typedef struct
+{
+  uint8_t  cmd;
+  uint32_t offset;
+} __attribute__((packed)) uploadResponse_t;
 
 typedef struct
 {

@@ -17,7 +17,7 @@
 
 static void CreateMessageUpdateDeviceTest(void);
 uint16_t lenght = 0;
-
+uint8_t arrr[20];
 int main(void)
 {
   SystemInit();
@@ -26,10 +26,23 @@ int main(void)
   Fn_DELAY_Init(72);
 	MSD0_SPI_Configuration();
 	SD_Mount();
-	f_unlink("bien.bin");
 	printf("hello\n");
-  CreateMessageUpdateDeviceTest();
+  //CreateMessageUpdateDeviceTest();
+	printf("Kich thuoc file %ld bytes\n",  SD_getFileSize("/demo/old.bin"));
+	SD_ReadFile("/demo/old.bin", arrr, 16, 0x30);
 	
+	for(int i=0; i<16; i++)
+	{
+		if (arrr[i] <= 0x0f)
+    {
+      printf("0%x ", arrr[i]);
+    }
+    else
+    {
+      printf("%x ", arrr[i]);
+    }
+	}
+	/*
   while (1)
   {
     if (Is_Message(&lenght) != 0)
@@ -42,8 +55,9 @@ int main(void)
       }
     }
 		Fn_DELAY_ms(1);
-  }
+  }*/
 }
+
 
 /**
    @brief Create a Message Update Device Test object

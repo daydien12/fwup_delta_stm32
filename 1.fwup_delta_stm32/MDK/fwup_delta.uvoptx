@@ -158,22 +158,22 @@
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>upload_value</ItemText>
+          <ItemText>temp_data</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>arr_name</ItemText>
+          <ItemText>arr_message</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Array2_Receive</ItemText>
+          <ItemText>data_after_length,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>update_name_files</ItemText>
+          <ItemText>count_element_arr</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

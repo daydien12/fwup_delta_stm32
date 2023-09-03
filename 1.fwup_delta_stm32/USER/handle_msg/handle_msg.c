@@ -16,8 +16,8 @@ static uint32_t update_check_sum = 0xFFFFFFFFUL;
 responseValueAll_t  response_value;
 
 static void UpdateFile(const messageFrameMsg_t datain, void(*Uart_SendByte)(char));
-static void UpdateResponseMsg(uint8_t cmd,  void(*Uart_SendByte)(char));
-static void DeltaResponseMsg(uint8_t  cmd,  void(*Uart_SendByte)(char));
+static void UpdateResponseMsg(uint8_t cmd, uint32_t offset, void(*Uart_SendByte)(char));
+static void DeltaResponseMsg(uint8_t  cmd, void(*Uart_SendByte)(char));
 static uint32_t crc32(unsigned long crc, const unsigned char *data, size_t length);
 
 static void Handle_Delay(uint8_t times);
@@ -49,7 +49,6 @@ void Handle_GetMsg(const messageFrameMsg_t datain, void(*Uart_SendByte)(char))
 			f_unlink(delta_data->name_create);
 			Delta_Run(delta_data->name_old, delta_data->name_patch, delta_data->name_create);
 			printf("Kich thuoc file %s la %ld bytes\n", delta_data->name_create, SD_getFileSize(delta_data->name_create));
-			//Handle_Delay(5);
 			DeltaResponseMsg(1, Uart_SendByte);
       break;
 
@@ -98,7 +97,7 @@ static void UpdateFile(const messageFrameMsg_t datain, void(*Uart_SendByte)(char
 			printf("check_sum     : %x\n", check_sum );
 			printf("size          : %d\n", update_size_file_bin);
 			f_unlink(update_name_files);
-			UpdateResponseMsg(OTA_STATE_START, Uart_SendByte); 
+			UpdateResponseMsg(OTA_STATE_START, update_size_file_bin, Uart_SendByte); 
       break;
 
     case OTA_STATE_DATA:
@@ -107,18 +106,16 @@ static void UpdateFile(const messageFrameMsg_t datain, void(*Uart_SendByte)(char
 			printf("length  : %d\n", data_temp->length);
 			printf("offset  : %d\n", data_temp->offset);
 			
-			update_check_sum = crc32(update_check_sum, data_temp->data, data_temp->length);
-			SD_WriteFile((char*)update_name_files, data_temp->data, data_temp->length, data_temp->offset);
-			printf("Kich thuoc file %s la %ld bytes\n", update_name_files, SD_getFileSize(update_name_files));
-			
-
 			if(update_count_size_file == data_temp->offset)
 			{
 				printf("compe: %d - %d!\n", update_count_size_file, data_temp->offset);
+				update_check_sum = crc32(update_check_sum, data_temp->data, data_temp->length);
+				SD_WriteFile((char*)update_name_files, data_temp->data, data_temp->length, data_temp->offset);
+				printf("Kich thuoc file %s la %ld bytes\n", update_name_files, SD_getFileSize(update_name_files));
 				update_count_size_file += data_temp->length;
 			}
 			
-			if (update_count_size_file >= update_size_file_bin)
+			if ((update_count_size_file >= update_size_file_bin) && (data_temp->offset == update_size_file_bin))
 			{
 				update_check_sum ^= 0xFFFFFFFFUL;
 				printf("Check_Sum: %x\n", update_check_sum);
@@ -126,20 +123,24 @@ static void UpdateFile(const messageFrameMsg_t datain, void(*Uart_SendByte)(char
 				{
 					printf("Done file: %d!\n", update_count_size_file);
 				}
+				UpdateResponseMsg(OTA_STATE_DATA, data_temp->offset, Uart_SendByte);
 			}
 			else
 			{
 				printf("Done: %d!\n", update_count_size_file);
+				UpdateResponseMsg(OTA_STATE_DATA, data_temp->offset, Uart_SendByte);
 			}
-			//Handle_Delay(2);
-			UpdateResponseMsg(OTA_STATE_DATA, Uart_SendByte); 
-			
       break;
 
     case OTA_STATE_END:
-      check_sum              = 0;
-      update_size_file_bin   = 0;
-      update_count_size_file = 0;
+			printf("cmd     : %x\n", datain.Data[0]);
+			if (update_count_size_file >= update_size_file_bin)
+			{
+				check_sum              = 0;
+				update_size_file_bin   = 0;
+				update_count_size_file = 0;
+				UpdateResponseMsg(OTA_STATE_END, 1, Uart_SendByte);
+			}
       break;
 
     case OTA_STATE_DELETE:
@@ -153,11 +154,14 @@ static void UpdateFile(const messageFrameMsg_t datain, void(*Uart_SendByte)(char
   }
 }
 
-static void UpdateResponseMsg(uint8_t cmd,  void(*Uart_SendByte)(char))
+static void UpdateResponseMsg(uint8_t cmd, uint32_t offset, void(*Uart_SendByte)(char))
 {
-	uint8_t arr[2], length_arr;
-	arr[0]= cmd;
-	length_arr = CreateMessage(TYPE_MSG_UPDATE_FILE,1, arr, arr);
+	uint8_t arr[20], length_arr;
+	uploadResponse_t data, *data_temp;
+	data.cmd = cmd;
+	data.offset = offset;
+	data_temp = &data;
+	length_arr = CreateMessage(TYPE_MSG_UPDATE_FILE,sizeof(uploadResponse_t), (uint8_t*)data_temp, arr);
 	for(int i=0; i<length_arr; i++)
 	{
 		Uart_SendByte(arr[i]);

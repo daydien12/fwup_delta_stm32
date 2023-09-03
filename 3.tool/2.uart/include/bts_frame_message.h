@@ -27,15 +27,6 @@ typedef struct
 	uint16_t  Crc;
 }messageFrameMsg_t;
 
-typedef enum
-{
-	TYPE_MSG_MODE_BOTLOADER 	  = 0x01,
-	TYPE_MSG_UPDATE_FILE 	      = 0x02,
-	TYPE_MSG_DELTA 	            = 0x03,
-	TYPE_MSG_UPDATE_FLASH       = 0x04,
-	TYPE_MSG_MODE_APP           = 0x05,
-}typeMessageSensor_e;
-
 
 class FrameMessage
 {
