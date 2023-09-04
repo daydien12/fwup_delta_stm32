@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/Uart.dir/src/bts_debug.cpp.o CMakeFiles/Uart.dir/src/bts_frame_message.cpp.o CMakeFiles/Uart.dir/src/bts_get_message.cpp.o CMakeFiles/Uart.dir/src/handle_msg.cpp.o CMakeFiles/Uart.dir/src/bts_serialport.cpp.o CMakeFiles/Uart.dir/src/file.cpp.o CMakeFiles/Uart.dir/src/main.cpp.o  -o Uart 
