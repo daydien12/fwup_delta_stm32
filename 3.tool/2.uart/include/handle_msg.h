@@ -63,6 +63,11 @@ typedef struct
 	char name_create[30];
 } __attribute__((packed)) deltaDiff_t;
 
+typedef struct
+{
+  uint32_t flash_app_address;
+	char name_file[30];
+} __attribute__((packed)) flashUpdate_t;
 
 class HandleMsg
 {
@@ -71,6 +76,8 @@ public:
   uint32_t Handle_UpdateFileRun(const char *name_file_bin, const char *port, const char *name_file, uint8_t &state,  uint32_t &offset, uint32_t &size_file_bin);
   uint32_t Handle_UpdateFileState(const uint8_t* datain, uint8_t &state,  uint32_t &offset, uint32_t &size_file_bin);
   uint32_t Handle_DeltaUpdate(const char *port, const char *name_old, const char *name_patch, const char *name_create);
+  uint32_t Handle_FlashUpdate(const char *port, const char *name_file, const uint32_t flash_address);
+  uint32_t Handle_Null(void);
 };
 
 #endif 

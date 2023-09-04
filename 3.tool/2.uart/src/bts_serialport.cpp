@@ -69,7 +69,8 @@ SerialPort::SerialPort(const char *port, unsigned baudRate, unsigned stopBits, b
 
 SerialPort::~SerialPort()
 {
-  if (mFileDesc == -1) {
+  if (mFileDesc == -1)
+  {
     return;
   }
 
@@ -90,7 +91,8 @@ SerialPort::~SerialPort()
  */
 int SerialPort::write(const char *buf, size_t nBytes)
 {
-  if (nBytes == 0) {
+  if (nBytes == 0)
+  {
     return 0;
   }
   return ::write(mFileDesc, buf, nBytes);
@@ -106,10 +108,11 @@ int SerialPort::write(const char *buf, size_t nBytes)
  * @param string The string to write to the serial port.
  * @return The number of bytes written to the serial port, or -1 if an error occurs.
  */
-int SerialPort::write(const std::string& string)
+int SerialPort::write(const std::string &string)
 {
   size_t len = string.length();
-  if (len == 0) {
+  if (len == 0)
+  {
     return 0;
   }
   return ::write(mFileDesc, string.c_str(), len);
@@ -129,7 +132,8 @@ int SerialPort::write(const std::string& string)
 int SerialPort::writebyte(const uint8_t *buf, size_t nBytes)
 {
   int ret = 0;
-  if (nBytes == 0) {
+  if (nBytes == 0)
+  {
     return 0;
   }
   return ::write(mFileDesc, buf, nBytes);

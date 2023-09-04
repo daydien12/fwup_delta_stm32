@@ -48,7 +48,7 @@ bool GetMessage::IsMessage(uint16_t &length)
   {
     flag_new_message = false;
     length = length_message;
-    //Debug.DebugStatus("GetMessage::IsMessage");
+    // Debug.DebugStatus("GetMessage::IsMessage");
     return 1;
   }
   return 0;
@@ -69,7 +69,7 @@ void GetMessage::TimeOut(void)
   {
     timeout_end = clock();
     if ((timeout_end - timeout_start) >= 40000)
-    //if ((timeout_end - timeout_start) >= 100000)
+    // if ((timeout_end - timeout_start) >= 100000)
     {
       length_message = 0;
       flag_new_message = false;
@@ -108,40 +108,40 @@ void GetMessage::GetMessages(uint8_t datain, uint8_t arr_message[])
 #endif
   switch (fsm_state)
   {
-    case FSM_STATE_START:
-   
-      if (count_element_arr == FSM_STATE_CHANGE_VALUE_WAIT)
-      {
-        if (arr_message[0] != 0xA5)
-        {
-          GetMessage::ClearState();
-        }
-        else
-        {
-          fsm_state = FSM_STATE_WAIT;
-        }
-      }
-      break;
+  case FSM_STATE_START:
 
-    case FSM_STATE_WAIT:
-      if (count_element_arr == FSM_STATE_CHANGE_VALUE_END)
+    if (count_element_arr == FSM_STATE_CHANGE_VALUE_WAIT)
+    {
+      if (arr_message[0] != 0xA5)
       {
-        data_after_length = Bytes_To_Uint16(arr_message[2], arr_message[3]);
-        fsm_state = FSM_STATE_END;
-      }
-      break;
-
-    case FSM_STATE_END:
-      if (count_element_arr == (data_after_length + 4))
-      {
-        flag_new_message = true;
-        length_message = count_element_arr;
-#if ENABLE_DEBUG_GETMESSAGE_FSM
-        Debug.DebugFSMMessage(fsm_state, count_element_arr, length_message, flag_new_message, datain);
-#endif
         GetMessage::ClearState();
       }
-      break;
+      else
+      {
+        fsm_state = FSM_STATE_WAIT;
+      }
+    }
+    break;
+
+  case FSM_STATE_WAIT:
+    if (count_element_arr == FSM_STATE_CHANGE_VALUE_END)
+    {
+      data_after_length = Bytes_To_Uint16(arr_message[2], arr_message[3]);
+      fsm_state = FSM_STATE_END;
+    }
+    break;
+
+  case FSM_STATE_END:
+    if (count_element_arr == (data_after_length + 4))
+    {
+      flag_new_message = true;
+      length_message = count_element_arr;
+#if ENABLE_DEBUG_GETMESSAGE_FSM
+      Debug.DebugFSMMessage(fsm_state, count_element_arr, length_message, flag_new_message, datain);
+#endif
+      GetMessage::ClearState();
+    }
+    break;
   }
 }
 /**

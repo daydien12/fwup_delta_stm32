@@ -61,10 +61,23 @@ typedef struct
 
 typedef struct
 {
+  uint32_t flash_app_address;
+	char name_file[30];
+} __attribute__((packed)) flashUpdate_t;
+
+typedef struct
+{
   uint8_t flag;
   uint8_t arr_msg_response[10];
   uint16_t count_time_send;
 } responseValueAll_t;
+
+typedef struct
+{
+  uint32_t offset;
+	uint32_t size_file_bin;
+	uint32_t count_SizeFileBin;
+} flashValueAll_t;
 
 void Handle_GetMsg(const messageFrameMsg_t datain, void(*Uart_SendByte)(char));
 void Handle_ResponseMsg(void);
