@@ -3,7 +3,8 @@
 
 FRESULT res;
 FATFS fs;
-
+#define POLYNOMIAL 0x04C11DB7
+uint32_t crc32(unsigned long crc, const unsigned char *data, size_t length);
 /*******************************************************************************
     @Tên ch?c nang    : scan_files
     @Mô t? ch?c nang  : Tìm ki?m t?t c? các t?p trong thu m?c t?p
@@ -139,6 +140,24 @@ uint32_t SD_ReadFile(const char *file_name, void *ptr, size_t size, size_t offse
   f_close(&fdsts);
   return brs;
 }
+uint32_t SD_GetCheckSumFile(const char *file_name)
+{
+	FIL fdsts;
+  UINT brs;
+	uint8_t arr[10];
+	uint32_t size_file_bin = 0, check_sum = 0xFFFFFFFFUL;
+  f_open(&fdsts, file_name, FA_OPEN_EXISTING | FA_READ);
+	size_file_bin = SD_getFileSize(file_name);
+	for(int i=0; i < size_file_bin; i++)
+	{
+		f_read(&fdsts, arr, 1, &brs);
+		check_sum = crc32(check_sum, arr, 1);
+	}
+	
+	f_close(&fdsts);
+	check_sum ^= 0xFFFFFFFFUL;
+	return check_sum;
+}
 
 void SD_Mount(void)
 {
@@ -147,4 +166,17 @@ void SD_Mount(void)
 	{
     printf("mount filesystem 0 failed : %d\n\r", res);
   }
+}
+
+uint32_t crc32(unsigned long crc, const unsigned char *data, size_t length)
+{
+  for (size_t i = 0; i < length; i++)
+  {
+    crc ^= data[i];
+    for (int j = 0; j < 8; j++)
+    {
+      crc = (crc >> 1) ^ ((crc & 1) ? POLYNOMIAL : 0);
+    }
+  }
+  return crc;
 }

@@ -67,6 +67,20 @@ typedef struct
 
 typedef struct
 {
+  uint32_t flash_app_address;
+} __attribute__((packed)) appModeUpdate_t;
+
+typedef struct
+{
+  uint32_t mode;
+	uint32_t reserved_1;
+	uint32_t reserved_2;
+	uint32_t reserved_3;
+} flashSaveMode_t;
+
+
+typedef struct
+{
   uint8_t flag;
   uint8_t arr_msg_response[10];
   uint16_t count_time_send;

@@ -95,12 +95,13 @@ uint32_t HandleMsg::Handle_UpdateFileState(const uint8_t *datain, uint8_t &state
 
   case OTA_STATE_NULL:
     printf("Null\n");
+    return 1;
     break;
 
   default:
     break;
   }
-  return 1;
+  return 0;
 }
 
 uint32_t HandleMsg::Handle_DeltaUpdate(const char *port, const char *name_old, const char *name_patch, const char *name_create)
@@ -147,12 +148,39 @@ uint32_t HandleMsg::Handle_FlashUpdate(const char *port, const char *name_file, 
   uart.~SerialPort();
   return sizearr;
 }
- uint32_t HandleMsg::Handle_Null(void)
- {
+
+uint32_t HandleMsg::Handle_ModeApp(const char *port, const uint32_t flash_address)
+{
+  SerialPort uart(port, 9600, 1);
+  uint8_t sizearr = 0, data_out[150];
+
+  FrameMessage framemessage;
+  appModeUpdate_t *app_data, app_data_temp;
+  app_data_temp.flash_app_address = flash_address;
+
+  app_data = &app_data_temp;
+  sizearr = framemessage.CreateMessage(TYPE_MSG_MODE_APP, sizeof(appModeUpdate_t), (uint8_t *)app_data, data_out);
+  uart.writebyte(data_out, sizearr);
+  uart.~SerialPort();
+  return sizearr;
+}
+
+uint32_t HandleMsg::Handle_ModeBootloader(const char *port)
+{
+  char *name_file = "bootloadr\n";
   SerialPort uart("/dev/ttyUSB0", 9600, 1);
-  uart.writebyte((uint8_t*)"xin chao\n", strlen("xin chao\n"));
+  uart.writebyte((uint8_t *)name_file, strlen(name_file));
+  return strlen(name_file);
+}
+
+
+uint32_t HandleMsg::Handle_Null(void)
+{
+  SerialPort uart("/dev/ttyUSB0", 9600, 1);
+  uart.writebyte((uint8_t *)"xin chao\n", strlen("xin chao\n"));
   return strlen("xin chao\n");
- }
+}
+
 uint32_t UpdateFile_CreateFrameMetaData(const char *name_file_bin, const char *name_file, uint8_t *dataout, uint32_t &size_file)
 {
   uint8_t sizearr = 0, length_name = strlen(name_file) + 1;
