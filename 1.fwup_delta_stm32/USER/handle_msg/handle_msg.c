@@ -58,11 +58,11 @@ void Handle_GetMsg(const messageFrameMsg_t datain, void(*Uart_SendByte)(char))
   deltaDiff_t *delta_data;
   flashUpdate_t *flash_data;
   appModeUpdate_t *app_data;
-	
+
   switch (datain.TypeMessage)
   {
     case TYPE_MSG_MODE_BOTLOADER:
-				
+
       break;
 
     case TYPE_MSG_UPDATE_FILE:
@@ -114,26 +114,19 @@ void Handle_GetMsg(const messageFrameMsg_t datain, void(*Uart_SendByte)(char))
       printf("offset: %d\n", flash_value.offset);
       FLASH_If_Finish();
       FlashResponseMsg(1, Uart_SendByte);
-      //Fn_DELAY_ms(100);
-      //iap_load_app(FLASH_APP_ADDR);
       break;
 
     case TYPE_MSG_MODE_APP:
-			app_data = (appModeUpdate_t*)datain.Data;
-			printf("Address: %x\n",app_data->flash_app_address);
-			AppModeResponseMsg(1, Uart_SendByte);
-			Fn_DELAY_ms(100);
+      app_data = (appModeUpdate_t*)datain.Data;
+      printf("Address: %x\n", app_data->flash_app_address);
+      AppModeResponseMsg(1, Uart_SendByte);
+      Fn_DELAY_ms(100);
       iap_load_app(FLASH_APP_ADDR);
       break;
 
     default:
       break;
   }
-}
-
-void Handle_ResponseMsg(void)
-{
-
 }
 
 static void UpdateFile(const messageFrameMsg_t datain, void(*Uart_SendByte)(char))
@@ -259,7 +252,7 @@ static void FlashResponseMsg(uint8_t cmd, void(*Uart_SendByte)(char))
 
 static void AppModeResponseMsg(uint8_t  cmd, void(*Uart_SendByte)(char))
 {
-	uint8_t arr[2], arr_out[10], length_arr;
+  uint8_t arr[2], arr_out[10], length_arr;
   arr[0] = cmd;
   length_arr = CreateMessage(TYPE_MSG_MODE_APP, 1, arr, arr_out);
   for (int i = 0; i < length_arr; i++)

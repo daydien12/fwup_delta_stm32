@@ -1,18 +1,11 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Uart.dir/src/bts_debug.cpp.o"
-  "CMakeFiles/Uart.dir/src/bts_debug.cpp.o.d"
   "CMakeFiles/Uart.dir/src/bts_frame_message.cpp.o"
-  "CMakeFiles/Uart.dir/src/bts_frame_message.cpp.o.d"
   "CMakeFiles/Uart.dir/src/bts_get_message.cpp.o"
-  "CMakeFiles/Uart.dir/src/bts_get_message.cpp.o.d"
   "CMakeFiles/Uart.dir/src/bts_serialport.cpp.o"
-  "CMakeFiles/Uart.dir/src/bts_serialport.cpp.o.d"
   "CMakeFiles/Uart.dir/src/file.cpp.o"
-  "CMakeFiles/Uart.dir/src/file.cpp.o.d"
   "CMakeFiles/Uart.dir/src/handle_msg.cpp.o"
-  "CMakeFiles/Uart.dir/src/handle_msg.cpp.o.d"
   "CMakeFiles/Uart.dir/src/main.cpp.o"
-  "CMakeFiles/Uart.dir/src/main.cpp.o.d"
   "Uart"
   "Uart.pdb"
 )

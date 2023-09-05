@@ -22,7 +22,7 @@ uint32_t Files::Files_GetSizeFile(void)
   return in_file.tellg();
 }
 
-uint8_t Files::Files_GetArrFile(const uint16_t size, const uint16_t offset, uint8_t *arr)
+uint8_t Files::Files_GetArrFile(const uint32_t size, const uint32_t offset, uint8_t *arr)
 {
   uint8_t data = 0, count_read_data = 0;
   if (!in_file.is_open())

@@ -12,7 +12,7 @@ public:
     Files(const char *name_file, std::ios_base::openmode __mode);
     ~Files();
     uint32_t Files_GetSizeFile(void);
-    uint8_t  Files_GetArrFile(const uint16_t size, const uint16_t offset, uint8_t *arr);
+    uint8_t  Files_GetArrFile(const uint32_t size, const uint32_t offset, uint8_t *arr);
     uint32_t Files_CalculatorChecksum(void);
     void  Files_Clear(void);
 private:

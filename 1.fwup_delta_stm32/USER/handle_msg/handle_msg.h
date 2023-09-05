@@ -94,7 +94,6 @@ typedef struct
 } flashValueAll_t;
 
 void Handle_GetMsg(const messageFrameMsg_t datain, void(*Uart_SendByte)(char));
-void Handle_ResponseMsg(void);
 void Handle_InitValueAll(void);
 
 #ifdef __cplusplus

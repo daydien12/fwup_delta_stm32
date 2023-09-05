@@ -14,7 +14,7 @@
 
 // Files        file("/home/bien/Desktop/bien.txt", std::ios::in|std::ios::binary);
 // #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Desktop/code_ota/gpio_blynk.bin"
- #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/blinky-k64f-new.bin"
+// #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/blinky-k64f-new.bin"
 // #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_10k.bin"
 // #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_20k.bin"
 // #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_30k.bin"
@@ -24,7 +24,7 @@
 // #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_200000.bin"
 // #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/demo/blinky-k64f-old.bin"
 // #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/demo/blinky-k64f.patch"
-//#define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/gpio_blynk.bin"
+// #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/gpio_blynk.bin"
 
 // #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Desktop/code_ota/gpio_blynk.bin"
 // #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/blinky-k64f-new.bin"
@@ -35,6 +35,8 @@
 // #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_51233.bin"
 // #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_53561.bin"
 // #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_200000.bin"
+// #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_650000.bin"
+ #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_660000.bin"
 // #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/gpio_blynk.bin"
 // #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/demo/blinky-k64f-old.bin"
 // #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/demo/blinky-k64f.patch"
