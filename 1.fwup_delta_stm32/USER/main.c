@@ -35,7 +35,7 @@ int main(void)
 //	FLASH_If_Erase(addrees_save);
 //	FLASH_If_Write(&addrees_save, (uint32_t*)temp_data, sizeof(flashSaveMode_t)/4);
 //	FLASH_If_Finish();
-	
+	//Run(db_DEBUG_SendChar);
   while (1)
   {
     if (Is_Message(&lenght) != 0)

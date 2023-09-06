@@ -167,17 +167,22 @@ uint32_t HandleMsg::Handle_ModeApp(const char *port, const uint32_t flash_addres
 
 uint32_t HandleMsg::Handle_ModeBootloader(const char *port)
 {
-  char *name_file = "bootloadr\n";
-  SerialPort uart("/dev/ttyUSB0", 9600, 1);
-  uart.writebyte((uint8_t *)name_file, strlen(name_file));
-  return strlen(name_file);
+  SerialPort uart(port, 9600, 1);
+  uint8_t sizearr = 0, data_out[150];
+  uint8_t arr[2] = {0, 0};
+  FrameMessage framemessage;
+
+  sizearr = framemessage.CreateMessage(TYPE_MSG_MODE_BOTLOADER, 1, (uint8_t *)arr, data_out);
+  uart.writebyte(data_out, sizearr);
+  uart.~SerialPort();
+  return sizearr;
 }
 
 
 uint32_t HandleMsg::Handle_Null(void)
 {
   SerialPort uart("/dev/ttyUSB0", 9600, 1);
-  uart.writebyte((uint8_t *)"xin chao\n", strlen("xin chao\n"));
+  //uart.writebyte((uint8_t *)"xin chao\n", strlen("xin chao\n"));
   return strlen("xin chao\n");
 }
 

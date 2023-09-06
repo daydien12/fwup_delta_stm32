@@ -5,7 +5,7 @@
 #include "string.h"
 #include "stdio.h"
 #include "debug.h"
-
+#include "bts_get_message.h"
 
 struct __FILE {
     int dummy;
@@ -31,13 +31,16 @@ int fputc(int ch, FILE *f) {
 #define TX GPIO_Pin_9
 #define RX GPIO_Pin_10
 //==============================kich thuc mang===============================
-#define string_size 80
+#define string_size 150
 //==============================khai bao mang==============================
 volatile char RX_FLAG_END_LINE = 0;
 char RRX[string_size];
 volatile unsigned int RXI = 0;
-volatile char temp_char;
 char Number[50];
+
+
+uint8_t Array2_Receive[string_size];
+
 //==============================Khoi tao GPIO va USART==============================
 GPIO_InitTypeDef GPIO_init1;
 USART_InitTypeDef USART_init1;
@@ -122,20 +125,22 @@ USART_InitTypeDef USART_init1;
 //==============================Ham ngat UART==============================
 	void USART1_IRQHandler()
 	{
+		char temp_char;
 		if(USART_GetITStatus(USART1,USART_IT_RXNE) != RESET)
 		{
 			temp_char = USART_ReceiveData(USART1);
-			if(temp_char != '\n')
-			{	
-				RRX[RXI] = temp_char;
-				RXI++;
-			}
-			else
-			{
-				RRX[RXI] = 0x00;
-				RX_FLAG_END_LINE=1;
-				RXI = 0;
-			}
+			BTS_Get_Message(temp_char, Array2_Receive);
+//			if(temp_char != '\n')
+//			{	
+//				RRX[RXI] = temp_char;
+//				RXI++;
+//			}
+//			else
+//			{
+//				RRX[RXI] = 0x00;
+//				RX_FLAG_END_LINE=1;
+//				RXI = 0;
+//			}
 		}
 		USART_ClearITPendingBit(USART1, USART_IT_RXNE);
 	}

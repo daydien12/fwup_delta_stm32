@@ -5,8 +5,8 @@
 #define FILE_PATCH "demo/patch.patch"
 #define FILE_CREATE "demo/create1.bin"
 
-// #define STATE_RUN TYPE_MSG_MODE_BOTLOADER
- #define STATE_RUN TYPE_MSG_UPDATE_FILE
+ #define STATE_RUN TYPE_MSG_MODE_BOTLOADER
+// #define STATE_RUN TYPE_MSG_UPDATE_FILE
 // #define STATE_RUN TYPE_MSG_DELTA
 // #define STATE_RUN TYPE_MSG_UPDATE_FLASH
 // #define STATE_RUN TYPE_MSG_MODE_APP
@@ -21,12 +21,16 @@
 // #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_10516k.bin"
 // #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_51233.bin"
 // #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_53561.bin"
-// #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_200000.bin"
+ //#define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_200000.bin"
 // #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/demo/blinky-k64f-old.bin"
 // #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/demo/blinky-k64f.patch"
 // #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/gpio_blynk.bin"
-
 // #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Desktop/code_ota/gpio_blynk.bin"
+//#define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.Apptest_stm32/MDK/Objects/gpio_blynk.bin"
+/*--------------------------------------------------------Delta/*--------------------------------------------------------*/
+#define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/4.delta/jj/patch.patch"
+//#define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/4.delta/jj/old.bin"
+
 // #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/blinky-k64f-new.bin"
 // #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_10k.bin"
 // #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_20k.bin"
@@ -36,7 +40,7 @@
 // #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_53561.bin"
 // #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_200000.bin"
 // #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_650000.bin"
- #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_660000.bin"
+// #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_660000.bin"
 // #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/gpio_blynk.bin"
 // #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/demo/blinky-k64f-old.bin"
 // #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/demo/blinky-k64f.patch"
@@ -79,7 +83,7 @@ int main()
               printf("Bootloader Done\n");
               state_sys = TYPE_MSG_MODE_NULL;
               count_timeout = 0;
-              flag_update_send = 0;
+              flag_update_send = 1;
               flag_update_send_timeout = 0;
             }
             else
@@ -165,7 +169,7 @@ int main()
       if (flag_update_send == 1)
       {
         sleep(1);
-        printf("Delta Send: %d\n", handlemsg.Handle_ModeBootloader("/dev/ttyUSB0"));
+        printf("Bootloader Send: %d\n", handlemsg.Handle_ModeBootloader("/dev/ttyUSB0"));
         count_timeout = 0;
         flag_update_send = 0;
         flag_update_send_timeout = 1;
@@ -173,7 +177,7 @@ int main()
 
       if (flag_update_send_timeout == 1)
       {
-        if (count_timeout >= 10)
+        if (count_timeout >= 1000)
         {
           flag_update_send = 1;
           count_timeout = 0;
@@ -185,9 +189,9 @@ int main()
       if (flag_update_send == 1)
       {
         sleep(1);
-        handlemsg.Handle_UpdateFileRun(NAME_BIN, "/dev/ttyUSB0", "ptit1.bin", state_update_file, offset, size_file_bin);
-        // handlemsg.Handle_UpdateFileRun(NAME_BIN, "/dev/ttyUSB0", FILE_OLD, state_update_file, offset, size_file_bin);
-        // handlemsg.Handle_UpdateFileRun(NAME_BIN, "/dev/ttyUSB0", FILE_PATCH, state_update_file, offset, size_file_bin);
+        //handlemsg.Handle_UpdateFileRun(NAME_BIN, "/dev/ttyUSB0", "ptit.bin", state_update_file, offset, size_file_bin);
+        //handlemsg.Handle_UpdateFileRun(NAME_BIN, "/dev/ttyUSB0", FILE_OLD, state_update_file, offset, size_file_bin);
+        handlemsg.Handle_UpdateFileRun(NAME_BIN, "/dev/ttyUSB0", FILE_PATCH, state_update_file, offset, size_file_bin);
         count_timeout = 0;
         flag_update_send = 0;
         flag_update_send_timeout = 1;
@@ -229,7 +233,9 @@ int main()
       if (flag_update_send == 1)
       {
         sleep(1);
-        printf("Flash Send: %d\n", handlemsg.Handle_FlashUpdate("/dev/ttyUSB0", "ptit.bin", 0x08006000));
+        //printf("Flash Send: %d\n", handlemsg.Handle_FlashUpdate("/dev/ttyUSB0", "ptit.bin", 0x08006000));
+        printf("Flash Send: %d\n", handlemsg.Handle_FlashUpdate("/dev/ttyUSB0", FILE_CREATE, 0x08006000));
+        
         count_timeout = 0;
         flag_update_send = 0;
         flag_update_send_timeout = 1;
@@ -250,7 +256,7 @@ int main()
       if (flag_update_send == 1)
       {
         sleep(5);
-        printf("Mode App Send: %d\n", handlemsg.Handle_ModeApp("/dev/ttyUSB0", 0x08004000));
+        printf("Mode App Send: %d\n", handlemsg.Handle_ModeApp("/dev/ttyUSB0", 0x08006000));
         count_timeout = 0;
         flag_update_send = 0;
         flag_update_send_timeout = 1;
@@ -271,7 +277,7 @@ int main()
       if (flag_update_send == 1)
       {
         sleep(1);
-        printf("Delta Send: %d\n", handlemsg.Handle_Null());
+        printf("Null Send: %d\n", handlemsg.Handle_Null());
         count_timeout = 0;
         flag_update_send = 0;
         flag_update_send_timeout = 1;
@@ -279,7 +285,7 @@ int main()
 
       if (flag_update_send_timeout == 1)
       {
-        if (count_timeout >= 10)
+        if (count_timeout >= 1000)
         {
           flag_update_send = 1;
           count_timeout = 0;

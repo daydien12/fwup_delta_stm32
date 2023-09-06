@@ -35,7 +35,7 @@ static void UpdateResponseMsg(uint8_t cmd, uint32_t offset, void(*Uart_SendByte)
 static void DeltaResponseMsg(uint8_t  cmd, void(*Uart_SendByte)(char));
 static void FlashResponseMsg(uint8_t  cmd, void(*Uart_SendByte)(char));
 static void AppModeResponseMsg(uint8_t  cmd, void(*Uart_SendByte)(char));
-
+static void BootloaderModeResponseMsg(uint8_t  cmd, void(*Uart_SendByte)(char));
 static uint32_t crc32(unsigned long crc, const unsigned char *data, size_t length);
 
 static void Handle_Delay(uint8_t times);
@@ -53,6 +53,10 @@ void Handle_InitValueAll(void)
   flash_value.count_SizeFileBin = FLASH_APP_ADDR;
 }
 
+void Run( void(*Uart_SendByte)(char))
+{
+	BootloaderModeResponseMsg(1, Uart_SendByte);
+}
 void Handle_GetMsg(const messageFrameMsg_t datain, void(*Uart_SendByte)(char))
 {
   deltaDiff_t *delta_data;
@@ -62,7 +66,10 @@ void Handle_GetMsg(const messageFrameMsg_t datain, void(*Uart_SendByte)(char))
   switch (datain.TypeMessage)
   {
     case TYPE_MSG_MODE_BOTLOADER:
-
+			printf("BootLoader Mode\n");
+		  Fn_DELAY_ms(10);
+			BootloaderModeResponseMsg(1, Uart_SendByte);
+			//AppModeResponseMsg(1, Uart_SendByte);
       break;
 
     case TYPE_MSG_UPDATE_FILE:
@@ -250,7 +257,7 @@ static void FlashResponseMsg(uint8_t cmd, void(*Uart_SendByte)(char))
   }
 }
 
-static void AppModeResponseMsg(uint8_t  cmd, void(*Uart_SendByte)(char))
+static void AppModeResponseMsg(uint8_t cmd, void(*Uart_SendByte)(char))
 {
   uint8_t arr[2], arr_out[10], length_arr;
   arr[0] = cmd;
@@ -259,6 +266,17 @@ static void AppModeResponseMsg(uint8_t  cmd, void(*Uart_SendByte)(char))
   {
     Uart_SendByte(arr_out[i]);
   }
+}
+
+void BootloaderModeResponseMsg(uint8_t cmd, void(*Uart_SendByte)(char))
+{
+  uint8_t arr[2], arr_out[10], length_arr;
+  arr[0] = cmd;
+  length_arr = CreateMessage(TYPE_MSG_MODE_BOTLOADER, 1, arr, arr_out);
+  for (int i = 0; i < length_arr; i++)
+  {
+  Uart_SendByte(arr_out[i]);
+	}
 }
 
 uint32_t crc32(unsigned long crc, const unsigned char *data, size_t length)

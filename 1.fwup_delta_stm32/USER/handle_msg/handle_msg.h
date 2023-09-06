@@ -95,7 +95,7 @@ typedef struct
 
 void Handle_GetMsg(const messageFrameMsg_t datain, void(*Uart_SendByte)(char));
 void Handle_InitValueAll(void);
-
+void Run( void(*Uart_SendByte)(char));
 #ifdef __cplusplus
 }
 #endif

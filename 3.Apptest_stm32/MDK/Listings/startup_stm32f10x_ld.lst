@@ -460,14 +460,14 @@ ARM Macro Assembler    Page 8
 
 
 ork --depend=.\objects\startup_stm32f10x_ld.d -o.\objects\startup_stm32f10x_ld.
-o -I.\RTE\Device\STM32F103C6 -I.\RTE\_GPIO -IC:\Users\nhanma\AppData\Local\Arm\
-Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include -IC:\Users\nhanma\AppData\Local\Arm\Pa
-cks\Keil\STM32F1xx_DFP\2.4.0\Device\Include -IC:\Users\nhanma\AppData\Local\Arm
-\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\StdPeriph_Driver\inc -IC:\Users\nhanma\A
-ppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\RTE_Driver --predefine="__UVISI
-ON_VERSION SETA 536" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_LD SETA 
-1" --predefine="_RTE_ SETA 1" --list=.\listings\startup_stm32f10x_ld.lst RTE\De
-vice\STM32F103C6\startup_stm32f10x_ld.s
+o -I.\RTE\Device\STM32F103C6 -I.\RTE\_GPIO -IC:\Users\nguye\AppData\Local\Arm\P
+acks\ARM\CMSIS\5.8.0\CMSIS\Core\Include -IC:\Users\nguye\AppData\Local\Arm\Pack
+s\Keil\STM32F1xx_DFP\2.3.0\Device\Include -IC:\Users\nguye\AppData\Local\Arm\Pa
+cks\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc -IC:\Users\nguye\AppDa
+ta\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\RTE_Driver --predefine="__UVISION_V
+ERSION SETA 536" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_LD SETA 1" -
+-predefine="_RTE_ SETA 1" --list=.\listings\startup_stm32f10x_ld.lst RTE\Device
+\STM32F103C6\startup_stm32f10x_ld.s
 
 
 
