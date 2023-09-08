@@ -3,78 +3,80 @@
 
 #define FILE_OLD "demo/old.bin"
 #define FILE_PATCH "demo/patch.patch"
-#define FILE_CREATE "demo/create1.bin"
+#define FILE_CREATE "demo/create.bin"
 
- #define STATE_RUN TYPE_MSG_MODE_BOTLOADER
-// #define STATE_RUN TYPE_MSG_UPDATE_FILE
-// #define STATE_RUN TYPE_MSG_DELTA
-// #define STATE_RUN TYPE_MSG_UPDATE_FLASH
-// #define STATE_RUN TYPE_MSG_MODE_APP
-// #define STATE_RUN TYPE_MSG_MODE_NULL
+#define PORT "/dev/ttyUSB0"
+#define FLASH_ADDRESS 0x08006000
 
-// Files        file("/home/bien/Desktop/bien.txt", std::ios::in|std::ios::binary);
-// #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Desktop/code_ota/gpio_blynk.bin"
-// #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/blinky-k64f-new.bin"
-// #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_10k.bin"
-// #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_20k.bin"
-// #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_30k.bin"
-// #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_10516k.bin"
-// #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_51233.bin"
-// #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_53561.bin"
- //#define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_200000.bin"
-// #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/demo/blinky-k64f-old.bin"
-// #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/demo/blinky-k64f.patch"
-// #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/gpio_blynk.bin"
-// #define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Desktop/code_ota/gpio_blynk.bin"
-//#define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.Apptest_stm32/MDK/Objects/gpio_blynk.bin"
-/*--------------------------------------------------------Delta/*--------------------------------------------------------*/
-#define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/4.delta/jj/patch.patch"
-//#define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/4.delta/jj/old.bin"
+#define PATH_FILE_OLD "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/4.delta/jj/old.bin"
+#define PATH_FILE_PATCH "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/4.delta/jj/patch.patch"
 
-// #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/blinky-k64f-new.bin"
-// #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_10k.bin"
-// #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_20k.bin"
-// #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_30k.bin"
-// #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_10516k.bin"
-// #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_51233.bin"
-// #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_53561.bin"
-// #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_200000.bin"
-// #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_650000.bin"
-// #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/bin_660000.bin"
-// #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/file_bin_test/gpio_blynk.bin"
-// #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/demo/blinky-k64f-old.bin"
-// #define NAME_BIN "/mnt/c/Users/nhanma/Documents/github/fwup_delta_stm32/3.tool/demo/blinky-k64f.patch"
+/*
+ MODE_NULL       = 0x00;
+ MODE_BOTLOADER  = 0x01;
+ UPDATE_FILE     = 0x02;
+ DELTA           = 0x03;
+ UPDATE_FLASH    = 0x04;
+ MODE_APP        = 0x05;
+ */
+
+/*
+1-0 vào bootloader
+
+2-0 upload file: patch;                     upload file, delta, flash, app
+2-1 upload file: old patch;                 upload file, delta, flash, app
+2-2 upload file: run;                       upload file,        flash, app
+3-0 Delta,                                                delta, flash, app
+4-0 Flash,                                                       flash, app
+5-0 vào app
+6-0 đổi file create -> old.   rename file,  upload file, delta, flash, app
+
+*/
+#define STATE_RUN 0x02
+/*old, patch = 1, patch = 0, file = 2*/
+
+#define NAME_BIN "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/3.Apptest_stm32/MDK/Objects/gpio_blynk.bin"
 
 HandleMsg handlemsg;
-SerialPort serial("/dev/ttyUSB0", 9600, 1);
+SerialPort serial(PORT, 9600, 1);
 GetMessage getmessage;
 FrameMessage framemessage;
 
+updateFile_t updatefile;
+valueSystem_t value_system;
+timeoutSendRepeat_t value_send;
+
 uint8_t state_sys = STATE_RUN;
 void CreateMessageUpdateDeviceTest(void);
-int main()
+void SendTimeout(void);
+
+int main(int argc, char *argv[])
 {
-  uint8_t array[200], state_update_file = OTA_STATE_START;
-  uint16_t sizeof_message = 0;
-  uint32_t offset = 0, size_file_bin = 0;
-  uint8_t length_data = 0, flag_update_send = 1, flag_update_send_timeout = 0;
-  uint64_t count_timeout = 0;
+  state_sys = argv[1][0] - '0';
+
+  value_send.flag_send = 1;
+  value_send.count_timeout = 0;
+  value_send.flag_send_timeout = 0;
+
+  value_system.sizeof_message = 0;
+  value_system.status_update_file = 0;
+
+  updatefile.state_update_file = OTA_STATE_START;
+  updatefile.mode_update_file = argv[2][0] - '0';
 
   while (1)
   {
     int32_t checkdata = serial.Available();
     if (checkdata > 0)
     {
-      getmessage.GetMessages(serial.readbyte(), array);
-      if (getmessage.IsMessage(sizeof_message) == 1)
+      getmessage.GetMessages(serial.readbyte(), value_system.array);
+      if (getmessage.IsMessage(value_system.sizeof_message) == 1)
       {
-        if (sizeof_message > 0)
+        if (value_system.sizeof_message > 0)
         {
           messageFrameMsg_t dataout;
-
-          length_data = framemessage.DetectMessage(array, &dataout);
+          uint8_t length_data = framemessage.DetectMessage(value_system.array, &dataout);
           printf("\nlength_data: %d\n", length_data);
-
           switch (dataout.TypeMessage)
           {
           case TYPE_MSG_MODE_BOTLOADER:
@@ -82,41 +84,65 @@ int main()
             {
               printf("Bootloader Done\n");
               state_sys = TYPE_MSG_MODE_NULL;
-              count_timeout = 0;
-              flag_update_send = 1;
-              flag_update_send_timeout = 0;
             }
-            else
+            break;
+
+          case TYPE_MSG_RENAME_FILE:
+            if (dataout.Data[0] == 1)
             {
-              printf("Bootloader Error\n");
-              count_timeout = 0;
-              flag_update_send = 1;
-              flag_update_send_timeout = 0;
+              printf("Rename file Done\n");
+              state_sys = TYPE_MSG_UPDATE_FILE;
             }
             break;
 
           case TYPE_MSG_UPDATE_FILE:
-            handlemsg.Handle_UpdateFileState(dataout.Data, state_update_file, offset, size_file_bin);
-            count_timeout = 0;
-            flag_update_send = 1;
-            flag_update_send_timeout = 0;
+
+            if (updatefile.mode_update_file == 0)
+            {
+              uint8_t state = handlemsg.Handle_UpdateFileState(dataout.Data, updatefile.state_update_file, updatefile.offset, updatefile.size_file_bin);
+              printf("--------------Update Mode 0(Patch): %d\n", state);
+              if ((state == 1))
+              {
+                updatefile.offset = 0;
+                updatefile.size_file_bin = 0;
+                state_sys = TYPE_MSG_DELTA;
+              }
+            }
+            else if (updatefile.mode_update_file == 1)
+            {
+              uint8_t state = handlemsg.Handle_UpdateFileState(dataout.Data, updatefile.state_update_file, updatefile.offset, updatefile.size_file_bin);
+              printf("--------------Update Mode 1(Old, Patch): %d\n", state);
+              if ((value_system.status_update_file == 0) && (state == 1))
+              {
+                updatefile.offset = 0;
+                updatefile.size_file_bin = 0;
+
+                value_system.status_update_file = 1;
+                updatefile.state_update_file = OTA_STATE_START;
+              }
+              else if ((value_system.status_update_file == 1) && (state == 1))
+              {
+                state_sys = TYPE_MSG_DELTA;
+              }
+            }
+            else if (updatefile.mode_update_file == 2)
+            {
+              uint8_t state = handlemsg.Handle_UpdateFileState(dataout.Data, updatefile.state_update_file, updatefile.offset, updatefile.size_file_bin);
+              printf("--------------Update Mode 2(run.bin): %d\n", state);
+              if ((state == 1))
+              {
+                updatefile.offset = 0;
+                updatefile.size_file_bin = 0;
+                state_sys = TYPE_MSG_UPDATE_FLASH;
+              }
+            }
             break;
 
           case TYPE_MSG_DELTA:
             if (dataout.Data[0] == 1)
             {
               printf("Created Delta Done\n");
-              state_sys = TYPE_MSG_MODE_NULL;
-              count_timeout = 0;
-              flag_update_send = 0;
-              flag_update_send_timeout = 0;
-            }
-            else
-            {
-              printf("Created Delta Error\n");
-              count_timeout = 0;
-              flag_update_send = 1;
-              flag_update_send_timeout = 0;
+              state_sys = TYPE_MSG_UPDATE_FLASH;
             }
             break;
 
@@ -125,16 +151,6 @@ int main()
             {
               printf("Flash Update Done\n");
               state_sys = TYPE_MSG_MODE_APP;
-              count_timeout = 0;
-              flag_update_send = 1;
-              flag_update_send_timeout = 0;
-            }
-            else
-            {
-              printf("Flash Update Error\n");
-              count_timeout = 0;
-              flag_update_send = 1;
-              flag_update_send_timeout = 0;
             }
             break;
 
@@ -143,161 +159,100 @@ int main()
             {
               printf("Mode App Done\n");
               state_sys = TYPE_MSG_MODE_NULL;
-              count_timeout = 0;
-              flag_update_send = 1;
-              flag_update_send_timeout = 0;
-            }
-            else
-            {
-              printf("Mode App Error\n");
-              count_timeout = 0;
-              flag_update_send = 1;
-              flag_update_send_timeout = 0;
             }
             break;
 
           case TYPE_MSG_MODE_NULL:
             break;
           }
+          value_send.flag_send = 1;
+          value_send.count_timeout = 0;
+          value_send.flag_send_timeout = 0;
         }
       }
     }
 
-    switch (state_sys)
+    if (value_send.flag_send == 1)
     {
-    case TYPE_MSG_MODE_BOTLOADER:
-      if (flag_update_send == 1)
+      switch (state_sys)
       {
+      case TYPE_MSG_MODE_BOTLOADER:
         sleep(1);
-        printf("Bootloader Send: %d\n", handlemsg.Handle_ModeBootloader("/dev/ttyUSB0"));
-        count_timeout = 0;
-        flag_update_send = 0;
-        flag_update_send_timeout = 1;
-      }
-
-      if (flag_update_send_timeout == 1)
-      {
-        if (count_timeout >= 1000)
-        {
-          flag_update_send = 1;
-          count_timeout = 0;
-        }
-        count_timeout++;
-      }
-      break;
-    case TYPE_MSG_UPDATE_FILE:
-      if (flag_update_send == 1)
-      {
+        printf("Bootloader Send: %d\n", handlemsg.Handle_ModeBootloader(PORT));
+        break;
+      case TYPE_MSG_RENAME_FILE:
+        printf("Rename Send: %d\n", handlemsg.Handle_RenameFile(PORT, FILE_CREATE, FILE_OLD));
+        break;
+      case TYPE_MSG_UPDATE_FILE:
         sleep(1);
-        //handlemsg.Handle_UpdateFileRun(NAME_BIN, "/dev/ttyUSB0", "ptit.bin", state_update_file, offset, size_file_bin);
-        //handlemsg.Handle_UpdateFileRun(NAME_BIN, "/dev/ttyUSB0", FILE_OLD, state_update_file, offset, size_file_bin);
-        handlemsg.Handle_UpdateFileRun(NAME_BIN, "/dev/ttyUSB0", FILE_PATCH, state_update_file, offset, size_file_bin);
-        count_timeout = 0;
-        flag_update_send = 0;
-        flag_update_send_timeout = 1;
-      }
-
-      if (flag_update_send_timeout == 1)
-      {
-        if (count_timeout >= 2000)
+        if (updatefile.mode_update_file == 1)
         {
-          flag_update_send = 1;
-          count_timeout = 0;
+          if (value_system.status_update_file == 0)
+          {
+            handlemsg.Handle_UpdateFileRun(PATH_FILE_OLD, PORT, FILE_OLD, updatefile.state_update_file, updatefile.offset, updatefile.size_file_bin);
+          }
+          else if (value_system.status_update_file == 1)
+          {
+            handlemsg.Handle_UpdateFileRun(PATH_FILE_PATCH, PORT, FILE_PATCH, updatefile.state_update_file, updatefile.offset, updatefile.size_file_bin);
+          }
         }
-        count_timeout++;
-      }
-      break;
+        else if (updatefile.mode_update_file == 0)
+        {
+          handlemsg.Handle_UpdateFileRun(PATH_FILE_PATCH, PORT, FILE_PATCH, updatefile.state_update_file, updatefile.offset, updatefile.size_file_bin);
+        }
+        else if (updatefile.mode_update_file == 2)
+        {
+          handlemsg.Handle_UpdateFileRun(NAME_BIN, PORT, "run.bin", updatefile.state_update_file, updatefile.offset, updatefile.size_file_bin);
+        }
+        break;
 
-    case TYPE_MSG_DELTA:
-      if (flag_update_send == 1)
-      {
+      case TYPE_MSG_DELTA:
         sleep(1);
-        printf("Delta Send: %d\n", handlemsg.Handle_DeltaUpdate("/dev/ttyUSB0", FILE_OLD, FILE_PATCH, FILE_CREATE));
-        count_timeout = 0;
-        flag_update_send = 0;
-        flag_update_send_timeout = 1;
-      }
+        printf("Delta Send: %d\n", handlemsg.Handle_DeltaUpdate(PORT, FILE_OLD, FILE_PATCH, FILE_CREATE));
+        break;
 
-      if (flag_update_send_timeout == 1)
-      {
-        if (count_timeout >= 2000)
-        {
-          flag_update_send = 1;
-          count_timeout = 0;
-        }
-        count_timeout++;
-      }
-      break;
-
-    case TYPE_MSG_UPDATE_FLASH:
-      if (flag_update_send == 1)
-      {
+      case TYPE_MSG_UPDATE_FLASH:
         sleep(1);
-        //printf("Flash Send: %d\n", handlemsg.Handle_FlashUpdate("/dev/ttyUSB0", "ptit.bin", 0x08006000));
-        printf("Flash Send: %d\n", handlemsg.Handle_FlashUpdate("/dev/ttyUSB0", FILE_CREATE, 0x08006000));
-        
-        count_timeout = 0;
-        flag_update_send = 0;
-        flag_update_send_timeout = 1;
-      }
-
-      if (flag_update_send_timeout == 1)
-      {
-        if (count_timeout >= 3000)
+        if (updatefile.mode_update_file == 2)
         {
-          flag_update_send = 1;
-          count_timeout = 0;
+          printf("Flash Send: %d\n", handlemsg.Handle_FlashUpdate(PORT, "run.bin", FLASH_ADDRESS));
         }
-        count_timeout++;
-      }
-      break;
+        else
+        {
+          printf("Flash Send: %d\n", handlemsg.Handle_FlashUpdate(PORT, FILE_CREATE, FLASH_ADDRESS));
+        }
+        break;
 
-    case TYPE_MSG_MODE_APP:
-      if (flag_update_send == 1)
-      {
+      case TYPE_MSG_MODE_APP:
         sleep(5);
-        printf("Mode App Send: %d\n", handlemsg.Handle_ModeApp("/dev/ttyUSB0", 0x08006000));
-        count_timeout = 0;
-        flag_update_send = 0;
-        flag_update_send_timeout = 1;
-      }
+        printf("Mode App Send: %d\n", handlemsg.Handle_ModeApp(PORT, FLASH_ADDRESS));
+        break;
 
-      if (flag_update_send_timeout == 1)
-      {
-        if (count_timeout >= 3000)
-        {
-          flag_update_send = 1;
-          count_timeout = 0;
-        }
-        count_timeout++;
-      }
-      break;
-
-    case TYPE_MSG_MODE_NULL:
-      if (flag_update_send == 1)
-      {
+      case TYPE_MSG_MODE_NULL:
         sleep(1);
         printf("Null Send: %d\n", handlemsg.Handle_Null());
-        count_timeout = 0;
-        flag_update_send = 0;
-        flag_update_send_timeout = 1;
+        break;
       }
-
-      if (flag_update_send_timeout == 1)
-      {
-        if (count_timeout >= 1000)
-        {
-          flag_update_send = 1;
-          count_timeout = 0;
-        }
-        count_timeout++;
-      }
-      break;
+      value_send.flag_send = 0;
+      value_send.count_timeout = 0;
+      value_send.flag_send_timeout = 1;
     }
-
+    SendTimeout();
     usleep(1000);
     getmessage.TimeOut();
   }
-
   return 0;
+}
+
+void SendTimeout(void)
+{
+  if (value_send.flag_send_timeout == 1)
+  {
+    if (value_send.count_timeout >= 1000)
+    {
+      value_send.flag_send = 1;
+      value_send.count_timeout = 0;
+    }
+    value_send.count_timeout++;
+  }
 }

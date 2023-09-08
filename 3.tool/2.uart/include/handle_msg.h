@@ -14,7 +14,7 @@ typedef enum
 	TYPE_MSG_DELTA 	            = 0x03,
 	TYPE_MSG_UPDATE_FLASH       = 0x04,
 	TYPE_MSG_MODE_APP           = 0x05,
-  
+  TYPE_MSG_RENAME_FILE        = 0x06,
 }typeMessage_e;
 
 /*
@@ -74,6 +74,13 @@ typedef struct
   uint32_t flash_app_address;
 } __attribute__((packed)) appModeUpdate_t;
 
+typedef struct
+{
+  char name_old[30];
+	char name_new[30];
+} __attribute__((packed)) renameFile_t;
+
+
 class HandleMsg
 {
 
@@ -84,6 +91,7 @@ public:
   uint32_t Handle_FlashUpdate(const char *port, const char *name_file, const uint32_t flash_address);
   uint32_t Handle_ModeApp(const char *port, const uint32_t flash_address);
   uint32_t Handle_ModeBootloader(const char *port);
+  uint32_t Handle_RenameFile(const char *port, const char *name_old, const char *name_new);
   uint32_t Handle_Null(void);
 };
 

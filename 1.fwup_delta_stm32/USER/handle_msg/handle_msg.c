@@ -29,14 +29,15 @@ void iap_load_app(uint32_t appxaddr)
   jump2app();
 }
 
-
 static void UpdateFile(const messageFrameMsg_t datain, void(*Uart_SendByte)(char));
 static void UpdateResponseMsg(uint8_t cmd, uint32_t offset, void(*Uart_SendByte)(char));
-static void DeltaResponseMsg(uint8_t  cmd, void(*Uart_SendByte)(char));
-static void FlashResponseMsg(uint8_t  cmd, void(*Uart_SendByte)(char));
-static void AppModeResponseMsg(uint8_t  cmd, void(*Uart_SendByte)(char));
+static void DeltaResponseMsg(uint8_t cmd, void(*Uart_SendByte)(char));
+static void FlashResponseMsg(uint8_t cmd, void(*Uart_SendByte)(char));
+static void AppModeResponseMsg(uint8_t cmd, void(*Uart_SendByte)(char));
 static void BootloaderModeResponseMsg(uint8_t  cmd, void(*Uart_SendByte)(char));
+static void RenameFileResponseMsg(uint8_t  cmd, void(*Uart_SendByte)(char));
 static uint32_t crc32(unsigned long crc, const unsigned char *data, size_t length);
+
 
 static void Handle_Delay(uint8_t times);
 
@@ -59,17 +60,32 @@ void Run( void(*Uart_SendByte)(char))
 }
 void Handle_GetMsg(const messageFrameMsg_t datain, void(*Uart_SendByte)(char))
 {
-  deltaDiff_t *delta_data;
-  flashUpdate_t *flash_data;
-  appModeUpdate_t *app_data;
-
+  deltaDiff_t 			*delta_data;
+  flashUpdate_t 		*flash_data;
+  appModeUpdate_t 	*app_data;
+	renameFile_t  		*rename_file_data;
   switch (datain.TypeMessage)
   {
     case TYPE_MSG_MODE_BOTLOADER:
 			printf("BootLoader Mode\n");
 		  Fn_DELAY_ms(10);
 			BootloaderModeResponseMsg(1, Uart_SendByte);
-			//AppModeResponseMsg(1, Uart_SendByte);
+      break;
+		
+		case TYPE_MSG_RENAME_FILE:
+			printf("Rename File Mode\n");
+		  Fn_DELAY_ms(10);
+			rename_file_data = (renameFile_t*)datain.Data;
+			printf("old: %s - new: %s",rename_file_data->name_old, rename_file_data->name_old);
+			SD_ScanFiles(path0);
+			if(SD_getFileSize(rename_file_data->name_old) > 0)
+			{
+				f_unlink(rename_file_data->name_new);
+				f_rename(rename_file_data->name_old, rename_file_data->name_new);
+				f_unlink(rename_file_data->name_old);
+				SD_ScanFiles(path0);
+			}
+			RenameFileResponseMsg(1, Uart_SendByte);
       break;
 
     case TYPE_MSG_UPDATE_FILE:
@@ -273,6 +289,17 @@ void BootloaderModeResponseMsg(uint8_t cmd, void(*Uart_SendByte)(char))
   uint8_t arr[2], arr_out[10], length_arr;
   arr[0] = cmd;
   length_arr = CreateMessage(TYPE_MSG_MODE_BOTLOADER, 1, arr, arr_out);
+  for (int i = 0; i < length_arr; i++)
+  {
+  Uart_SendByte(arr_out[i]);
+	}
+}
+
+static void RenameFileResponseMsg(uint8_t cmd, void(*Uart_SendByte)(char))
+{
+	uint8_t arr[2], arr_out[10], length_arr;
+  arr[0] = cmd;
+  length_arr = CreateMessage(TYPE_MSG_RENAME_FILE, 1, arr, arr_out);
   for (int i = 0; i < length_arr; i++)
   {
   Uart_SendByte(arr_out[i]);

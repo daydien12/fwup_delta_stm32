@@ -86,6 +86,7 @@ uint32_t HandleMsg::Handle_UpdateFileState(const uint8_t *datain, uint8_t &state
     if ((data_temp->cmd == OTA_STATE_END) && (data_temp->offset == 1))
     {
       state = OTA_STATE_NULL;
+      return 1;
     }
     else
     {
@@ -95,7 +96,6 @@ uint32_t HandleMsg::Handle_UpdateFileState(const uint8_t *datain, uint8_t &state
 
   case OTA_STATE_NULL:
     printf("Null\n");
-    return 1;
     break;
 
   default:
@@ -178,11 +178,33 @@ uint32_t HandleMsg::Handle_ModeBootloader(const char *port)
   return sizearr;
 }
 
+uint32_t HandleMsg::Handle_RenameFile(const char *port, const char *name_old, const char *name_new)
+{
+  SerialPort uart(port, 9600, 1);
+  uint8_t sizearr = 0, data_out[150];
+  uint8_t lenth_old = strlen(name_old);
+  uint8_t lenth_new = strlen(name_new);
+
+  FrameMessage framemessage;
+  renameFile_t renameFile_data, *renameFile_data_temp;
+  memcpy(renameFile_data.name_old, name_old, lenth_old);
+  memcpy(renameFile_data.name_new, name_new, lenth_new);
+
+
+  renameFile_data.name_old[lenth_old] = 0;
+  renameFile_data.name_new[lenth_new] = 0;
+
+  renameFile_data_temp = &renameFile_data;
+  sizearr = framemessage.CreateMessage(TYPE_MSG_RENAME_FILE, sizeof(renameFile_t), (uint8_t *)renameFile_data_temp, data_out);
+  uart.writebyte(data_out, sizearr);
+  uart.~SerialPort();
+  return sizearr;
+}
 
 uint32_t HandleMsg::Handle_Null(void)
 {
   SerialPort uart("/dev/ttyUSB0", 9600, 1);
-  //uart.writebyte((uint8_t *)"xin chao\n", strlen("xin chao\n"));
+  // uart.writebyte((uint8_t *)"xin chao\n", strlen("xin chao\n"));
   return strlen("xin chao\n");
 }
 

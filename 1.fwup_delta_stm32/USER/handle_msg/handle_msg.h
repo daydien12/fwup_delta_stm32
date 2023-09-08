@@ -61,6 +61,13 @@ typedef struct
 
 typedef struct
 {
+  char name_old[30];
+	char name_new[30];
+} __attribute__((packed)) renameFile_t;
+
+
+typedef struct
+{
   uint32_t flash_app_address;
 	char name_file[30];
 } __attribute__((packed)) flashUpdate_t;
