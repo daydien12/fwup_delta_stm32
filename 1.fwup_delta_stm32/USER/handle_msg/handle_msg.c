@@ -77,13 +77,11 @@ void Handle_GetMsg(const messageFrameMsg_t datain, void(*Uart_SendByte)(char))
 		  Fn_DELAY_ms(10);
 			rename_file_data = (renameFile_t*)datain.Data;
 			printf("old: %s - new: %s",rename_file_data->name_old, rename_file_data->name_old);
-			SD_ScanFiles(path0);
 			if(SD_getFileSize(rename_file_data->name_old) > 0)
 			{
 				f_unlink(rename_file_data->name_new);
 				f_rename(rename_file_data->name_old, rename_file_data->name_new);
 				f_unlink(rename_file_data->name_old);
-				SD_ScanFiles(path0);
 			}
 			RenameFileResponseMsg(1, Uart_SendByte);
       break;

@@ -3,6 +3,7 @@
 ".\objects\main.o"
 ".\objects\debug.o"
 ".\objects\flash_if.o"
+".\objects\i2c.o"
 ".\objects\bts_convert.o"
 ".\objects\bts_frame_message.o"
 ".\objects\bts_get_message.o"
@@ -20,6 +21,9 @@
 ".\objects\gpio_stm32f10x.o"
 ".\objects\startup_stm32f10x_ld.o"
 ".\objects\system_stm32f10x.o"
+".\objects\stm32f10x_adc.o"
+".\objects\stm32f10x_i2c.o"
+".\objects\stm32f10x_tim.o"
 --ro-base 0x8006000 --entry 0x8006000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\gpio_blynk.map" -o .\Objects\gpio_blynk.axf

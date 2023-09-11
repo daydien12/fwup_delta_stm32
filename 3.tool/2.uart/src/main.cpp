@@ -5,7 +5,7 @@
 #define FILE_PATCH "demo/patch.patch"
 #define FILE_CREATE "demo/create.bin"
 
-#define PORT "/dev/ttyUSB0"
+#define PORT "/dev/ttyUSB1"
 #define FLASH_ADDRESS 0x08006000
 
 #define PATH_FILE_OLD "/mnt/c/Users/nguye/OneDrive/Documents/github/fwup_delta_stm32/4.delta/jj/old.bin"
@@ -26,9 +26,9 @@
 2-0 upload file: patch;                     upload file, delta, flash, app
 2-1 upload file: old patch;                 upload file, delta, flash, app
 2-2 upload file: run;                       upload file,        flash, app
-3-0 Delta,                                                delta, flash, app
-4-0 Flash,                                                       flash, app
-5-0 vào app
+3-0 Delta,                                               delta, flash, app
+4-0 Flash,                                                      flash, app
+5-0 vào app                                                            app
 6-0 đổi file create -> old.   rename file,  upload file, delta, flash, app
 
 */
